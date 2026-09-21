@@ -1,9 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ko">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>공직자 생성형 AI 활용 및 AI 리터러시 설문조사</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>공직자 생성형 AI 활용 및 AI 리터러시 설문조사 - 응답저장 테스트</title>
 <style>
   @page { size: A4 portrait; margin: 13mm 14mm 14mm 14mm; }
   * { box-sizing: border-box; }
@@ -111,271 +112,355 @@
     .page { max-width: none; }
   }
 </style>
-</head>
+<style>
+  .opt, .level { position: relative; }
+  .choice-label, .level-label { display:flex; gap:9px; align-items:flex-start; cursor:pointer; padding:5px 7px; border-radius:7px; }
+  .choice-label:hover, .level-label:hover { background:#f4f7fb; }
+  .choice-label input, .level-label input { margin-top:4px; transform:scale(1.08); flex:0 0 auto; }
+  .matrix-radio { transform:scale(1.12); cursor:pointer; }
+  .rank-select { width:54px; padding:4px; border:1px solid #999; border-radius:5px; background:#fff; }
+  .missing { outline:3px solid #f2aaaa; outline-offset:4px; border-radius:4px; }
+  .savebar { position:sticky; bottom:0; margin-top:24px; padding:12px; background:rgba(255,255,255,.96); border-top:2px solid #333; display:flex; gap:9px; align-items:center; flex-wrap:wrap; z-index:20; }
+  .savebar button { border:1px solid #666; border-radius:7px; padding:9px 14px; background:#fff; cursor:pointer; font-weight:700; }
+  .savebar .primary { background:#222; color:#fff; border-color:#222; }
+  #survey-status { font-size:9.8pt; font-weight:700; }
+  #survey-status.ok { color:#146c43; }
+  #survey-status.err { color:#b42318; }
+  @media print { .savebar { display:none !important; } input, select { appearance:none; -webkit-appearance:none; } }
+</style></head>
 <body>
 <div class="page">
-
 <h1>공직자 생성형 AI 활용 및 AI 리터러시 설문조사</h1>
-<div class="subtitle">최종 설문안 초안 · 활용경험 고려 수정본</div>
-
+<div class="subtitle">테스트용 · 화면 응답 및 HTML 결과파일 저장</div>
 <div class="intro">
   본 설문은 직원 개인의 AI 활용능력을 평가하거나 순위를 매기기 위한 것이 아닙니다.
   생성형 AI를 업무에서 어떻게 인식하고 활용하고 있는지, 결과를 어떻게 확인·판단하는지,
-  그리고 안전하고 효과적인 활용을 위해 어떤 지원이 필요한지를 파악하기 위한 조사입니다.<br><br>
+  그리고 안전하고 효과적인 활용을 위해 어떤 지원이 필요한지를 파악하기 위한 조사입니다.<br/><br/>
   정답을 맞히는 시험이 아니며, 평소 본인의 생각과 업무방식에 가장 가까운 항목을 선택해 주시기 바랍니다.
-  일부 상황형 문항은 실제 업무에서의 판단방식을 확인하기 위한 문항입니다.<br><br>
-  <strong>생성형 AI 활용 경험이 많지 않더라도 응답하실 수 있습니다. 직접 경험한 적이 없는 상황은 본인이 실제 업무에서 해당 상황을 접했을 때 어떻게 판단하거나 대응할 것 같은지를 기준으로 답해 주십시오.</strong>
+  일부 상황형 문항은 실제 업무에서의 판단방식을 확인하기 위한 문항입니다.<br/><br/>
+<strong>생성형 AI 활용 경험이 많지 않더라도 응답하실 수 있습니다. 직접 경험한 적이 없는 상황은 본인이 실제 업무에서 해당 상황을 접했을 때 어떻게 판단하거나 대응할 것 같은지를 기준으로 답해 주십시오.</strong>
 </div>
-
 <div class="section">
 <h2>Ⅰ. 현재 AI 활용 정도</h2>
-
-<div class="q">
-  <div class="qt">Q1. 현재 생성형 AI를 업무에 어느 정도 활용하고 있습니까?</div>
-  <div class="opt">① 거의 사용하지 않는다.</div>
-  <div class="opt">② 필요할 때 가끔 사용한다.</div>
-  <div class="opt">③ 일부 업무에서 비교적 자주 사용한다.</div>
-  <div class="opt">④ 여러 업무에서 일상적으로 사용한다.</div>
-  <div class="opt">⑤ 대부분의 업무과정에서 자연스럽게 활용하고 있다.</div>
+<div class="q" id="q1">
+<div class="qt">Q1. 현재 생성형 AI를 업무에 어느 정도 활용하고 있습니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="거의 사용하지 않는다." name="q1" type="radio" value="1"/><span>① 거의 사용하지 않는다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="필요할 때 가끔 사용한다." name="q1" type="radio" value="2"/><span>② 필요할 때 가끔 사용한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="일부 업무에서 비교적 자주 사용한다." name="q1" type="radio" value="3"/><span>③ 일부 업무에서 비교적 자주 사용한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="여러 업무에서 일상적으로 사용한다." name="q1" type="radio" value="4"/><span>④ 여러 업무에서 일상적으로 사용한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="대부분의 업무과정에서 자연스럽게 활용하고 있다." name="q1" type="radio" value="5"/><span>⑤ 대부분의 업무과정에서 자연스럽게 활용하고 있다.</span></label></div>
 </div>
-
-<div class="q">
-  <div class="qt">Q2. 현재 본인의 업무를 수행하는 데 생성형 AI는 어느 정도 필요하다고 생각하십니까?</div>
-  <div class="opt">① 거의 필요하지 않다.</div>
-  <div class="opt">② 있으면 편리하지만 없어도 충분하다.</div>
-  <div class="opt">③ 일부 업무에서는 꽤 필요하다.</div>
-  <div class="opt">④ 업무의 효율이나 완성도를 높이는 데 중요한 도구이다.</div>
-  <div class="opt">⑤ 효과적으로 업무를 수행하기 위해 사실상 필수적인 도구이다.</div>
+<div class="q" id="q2">
+<div class="qt">Q2. 현재 본인의 업무를 수행하는 데 생성형 AI는 어느 정도 필요하다고 생각하십니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="거의 필요하지 않다." name="q2" type="radio" value="1"/><span>① 거의 필요하지 않다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="있으면 편리하지만 없어도 충분하다." name="q2" type="radio" value="2"/><span>② 있으면 편리하지만 없어도 충분하다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="일부 업무에서는 꽤 필요하다." name="q2" type="radio" value="3"/><span>③ 일부 업무에서는 꽤 필요하다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="업무의 효율이나 완성도를 높이는 데 중요한 도구이다." name="q2" type="radio" value="4"/><span>④ 업무의 효율이나 완성도를 높이는 데 중요한 도구이다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="효과적으로 업무를 수행하기 위해 사실상 필수적인 도구이다." name="q2" type="radio" value="5"/><span>⑤ 효과적으로 업무를 수행하기 위해 사실상 필수적인 도구이다.</span></label></div>
 </div>
 </div>
-
 <div class="section">
 <h2>Ⅱ. AI에 대한 신뢰</h2>
-
-<div class="q">
-  <div class="qt">Q3. 평소 생성형 AI의 답변을 어느 정도 신뢰하는 편입니까?</div>
-  <div class="opt">① 거의 신뢰하지 않는다.</div>
-  <div class="opt">② 별로 신뢰하지 않는다.</div>
-  <div class="opt">③ 어느 정도 신뢰한다.</div>
-  <div class="opt">④ 상당히 신뢰한다.</div>
-  <div class="opt">⑤ 대부분 신뢰한다.</div>
+<div class="q" id="q3">
+<div class="qt">Q3. 평소 생성형 AI의 답변을 어느 정도 신뢰하는 편입니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="거의 신뢰하지 않는다." name="q3" type="radio" value="1"/><span>① 거의 신뢰하지 않는다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="별로 신뢰하지 않는다." name="q3" type="radio" value="2"/><span>② 별로 신뢰하지 않는다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="어느 정도 신뢰한다." name="q3" type="radio" value="3"/><span>③ 어느 정도 신뢰한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="상당히 신뢰한다." name="q3" type="radio" value="4"/><span>④ 상당히 신뢰한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="대부분 신뢰한다." name="q3" type="radio" value="5"/><span>⑤ 대부분 신뢰한다.</span></label></div>
 </div>
-
-<div class="q">
-  <div class="qt">Q4. 위와 같이 생각하는 데 가장 크게 영향을 미친 것은 무엇입니까?</div>
-  <div class="opt">① 질문이나 제공하는 자료에 따라 답변의 품질이 크게 달라진다고 느끼기 때문이다.</div>
-  <div class="opt">② AI가 틀린 정보나 불확실한 근거를 제시하는 경우가 있기 때문이다.</div>
-  <div class="opt">③ 실제로 사용해 보면 내가 직접 찾거나 정리하는 것보다 유용한 답을 얻는 경우가 많기 때문이다.</div>
-  <div class="opt">④ 업무의 내용이나 난이도에 따라 AI를 믿고 활용할 수 있는 정도가 다르다고 생각하기 때문이다.</div>
-  <div class="opt">⑤ 완벽하지 않더라도 필요한 부분을 확인하고 보완하면서 충분히 활용할 수 있다고 생각하기 때문이다.</div>
+<div class="q" id="q4">
+<div class="qt">Q4. 위와 같이 생각하는 데 가장 크게 영향을 미친 것은 무엇입니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="질문이나 제공하는 자료에 따라 답변의 품질이 크게 달라진다고 느끼기 때문이다." name="q4" type="radio" value="1"/><span>① 질문이나 제공하는 자료에 따라 답변의 품질이 크게 달라진다고 느끼기 때문이다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="AI가 틀린 정보나 불확실한 근거를 제시하는 경우가 있기 때문이다." name="q4" type="radio" value="2"/><span>② AI가 틀린 정보나 불확실한 근거를 제시하는 경우가 있기 때문이다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="실제로 사용해 보면 내가 직접 찾거나 정리하는 것보다 유용한 답을 얻는 경우가 많기 때문이다." name="q4" type="radio" value="3"/><span>③ 실제로 사용해 보면 내가 직접 찾거나 정리하는 것보다 유용한 답을 얻는 경우가 많기 때문이다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="업무의 내용이나 난이도에 따라 AI를 믿고 활용할 수 있는 정도가 다르다고 생각하기 때문이다." name="q4" type="radio" value="4"/><span>④ 업무의 내용이나 난이도에 따라 AI를 믿고 활용할 수 있는 정도가 다르다고 생각하기 때문이다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="완벽하지 않더라도 필요한 부분을 확인하고 보완하면서 충분히 활용할 수 있다고 생각하기 때문이다." name="q4" type="radio" value="5"/><span>⑤ 완벽하지 않더라도 필요한 부분을 확인하고 보완하면서 충분히 활용할 수 있다고 생각하기 때문이다.</span></label></div>
 </div>
 </div>
-
 <div class="section">
 <h2>Ⅲ. 현재 AI 활용 수준</h2>
-
-<div class="q">
-  <div class="qt">Q5. 현재 본인이 생성형 AI를 업무에 활용할 수 있는 수준은 어디까지라고 생각하십니까?</div>
-  <div class="note">각 단계는 이전 단계의 활용능력을 포함한다고 보고, 본인에게 가장 가까운 수준을 선택해 주십시오.</div>
-
-  <div class="level"><b>① 아직 업무에 활용하기 어렵다.</b>
-    <div class="desc">AI를 어떻게 활용해야 할지 잘 모르거나, 간단한 질문 정도만 할 수 있다.</div>
-  </div>
-  <div class="level"><b>② 간단한 자료정리나 문서작성에 활용할 수 있다.</b>
-    <div class="desc">자료 요약, 문장 다듬기, 이메일·보고서 초안 작성 등에 활용할 수 있다.</div>
-  </div>
-  <div class="level"><b>③ 업무 목적에 맞게 AI의 결과를 조정할 수 있다.</b>
-    <div class="desc">필요한 배경과 조건을 설명하고, 원하는 형식이나 내용으로 수정·보완할 수 있다.</div>
-  </div>
-  <div class="level"><b>④ 복잡한 업무의 검토·분석에도 활용할 수 있다.</b>
-    <div class="desc">여러 자료를 비교하고 쟁점·대안·예외사항을 검토하며, 주요 근거를 확인하면서 활용할 수 있다.</div>
-  </div>
-  <div class="level"><b>⑤ AI를 활용해 업무방식을 개선할 수 있다.</b>
-    <div class="desc">반복업무의 절차·판단조건·주의사항을 구조화하고, 다른 직원도 활용할 수 있는 업무도구로 만들 수 있다.</div>
-  </div>
+<div class="q" id="q5">
+<div class="qt">Q5. 현재 본인이 생성형 AI를 업무에 활용할 수 있는 수준은 어디까지라고 생각하십니까?</div>
+<div class="note">각 단계는 이전 단계의 활용능력을 포함한다고 보고, 본인에게 가장 가까운 수준을 선택해 주십시오.</div>
+<div class="level"><label class="level-label"><input data-label="① 아직 업무에 활용하기 어렵다. AI를 어떻게 활용해야 할지 잘 모르거나, 간단한 질문 정도만 할 수 있다." name="q5" type="radio" value="1"/><span><b>① 아직 업무에 활용하기 어렵다.</b>
+<div class="desc">AI를 어떻게 활용해야 할지 잘 모르거나, 간단한 질문 정도만 할 수 있다.</div>
+</span></label></div>
+<div class="level"><label class="level-label"><input data-label="② 간단한 자료정리나 문서작성에 활용할 수 있다. 자료 요약, 문장 다듬기, 이메일·보고서 초안 작성 등에 활용할 수 있다." name="q5" type="radio" value="2"/><span><b>② 간단한 자료정리나 문서작성에 활용할 수 있다.</b>
+<div class="desc">자료 요약, 문장 다듬기, 이메일·보고서 초안 작성 등에 활용할 수 있다.</div>
+</span></label></div>
+<div class="level"><label class="level-label"><input data-label="③ 업무 목적에 맞게 AI의 결과를 조정할 수 있다. 필요한 배경과 조건을 설명하고, 원하는 형식이나 내용으로 수정·보완할 수 있다." name="q5" type="radio" value="3"/><span><b>③ 업무 목적에 맞게 AI의 결과를 조정할 수 있다.</b>
+<div class="desc">필요한 배경과 조건을 설명하고, 원하는 형식이나 내용으로 수정·보완할 수 있다.</div>
+</span></label></div>
+<div class="level"><label class="level-label"><input data-label="④ 복잡한 업무의 검토·분석에도 활용할 수 있다. 여러 자료를 비교하고 쟁점·대안·예외사항을 검토하며, 주요 근거를 확인하면서 활용할 수 있다." name="q5" type="radio" value="4"/><span><b>④ 복잡한 업무의 검토·분석에도 활용할 수 있다.</b>
+<div class="desc">여러 자료를 비교하고 쟁점·대안·예외사항을 검토하며, 주요 근거를 확인하면서 활용할 수 있다.</div>
+</span></label></div>
+<div class="level"><label class="level-label"><input data-label="⑤ AI를 활용해 업무방식을 개선할 수 있다. 반복업무의 절차·판단조건·주의사항을 구조화하고, 다른 직원도 활용할 수 있는 업무도구로 만들 수 있다." name="q5" type="radio" value="5"/><span><b>⑤ AI를 활용해 업무방식을 개선할 수 있다.</b>
+<div class="desc">반복업무의 절차·판단조건·주의사항을 구조화하고, 다른 직원도 활용할 수 있는 업무도구로 만들 수 있다.</div>
+</span></label></div>
 </div>
 </div>
-
 <div class="section">
 <h2>Ⅳ. AI 활용 과정에서의 대응</h2>
-
-<div class="q">
-  <div class="qt">Q6. 다음 상황에서 AI의 결과를 보완하여 실제 업무에 활용하려고 합니다. 아래 행동 중 본인이 중요하다고 생각하는 4가지를 선택하고, 실제로 처리할 것 같은 순서대로 1~4를 적어 주십시오.</div>
-
-  <div class="scenario">
+<div class="q" id="q6">
+<div class="qt">Q6. 다음 상황에서 AI의 결과를 보완하여 실제 업무에 활용하려고 합니다. 아래 행동 중 본인이 중요하다고 생각하는 4가지를 선택하고, 실제로 처리할 것 같은 순서대로 1~4를 적어 주십시오.</div>
+<div class="scenario">
     생성형 AI에게 업무 검토보고서 초안을 작성하도록 요청했습니다.
     결과에는 활용할 만한 내용도 있지만 일부 업무조건이 충분히 반영되지 않았고,
     근거가 정확한지 확인이 필요한 내용도 있습니다.
     필요한 경우 질문을 바꾸거나 추가자료를 활용하여 결과를 보완할 수 있습니다.
   </div>
-
-  <table>
-    <thead><tr><th style="width:8%">코드</th><th>행동</th><th style="width:13%">순서</th></tr></thead>
-    <tbody>
-      <tr><td class="center"><b>A</b></td><td>질문을 더 구체적으로 바꾸고 원하는 형식·조건을 덧붙여 다시 요청한다.</td><td class="center">(　)</td></tr>
-      <tr><td class="center"><b>B</b></td><td>추가자료의 개인정보·내부정보 여부를 확인하고 필요한 내용만 골라 제공한다.</td><td class="center">(　)</td></tr>
-      <tr><td class="center"><b>C</b></td><td>다른 생성형 AI에도 같은 내용을 물어보고 답변의 차이를 비교해 본다.</td><td class="center">(　)</td></tr>
-      <tr><td class="center"><b>D</b></td><td>답변이 기대와 다른 이유를 살펴보고 업무 목적과 판단기준을 다시 정리한다.</td><td class="center">(　)</td></tr>
-      <tr><td class="center"><b>E</b></td><td>AI에게 근거와 출처를 다시 제시하도록 요청하고 답변을 보완한다.</td><td class="center">(　)</td></tr>
-      <tr><td class="center"><b>F</b></td><td>복잡한 요청은 쟁점별로 나누고 각 단계에 필요한 자료와 조건을 제공한다.</td><td class="center">(　)</td></tr>
-      <tr><td class="center"><b>G</b></td><td>기존 업무자료나 유사 사례와 비교해 활용할 수 있는 내용을 추려낸다.</td><td class="center">(　)</td></tr>
-      <tr><td class="center"><b>H</b></td><td>법령·수치 등 핵심내용은 원자료로 확인하고 최종 판단은 직접 정리한다.</td><td class="center">(　)</td></tr>
-    </tbody>
-  </table>
-  <div class="flow">[　] → [　] → [　] → [　]</div>
-  <div class="small center">※ 선택한 4개의 코드만 순서대로 적어 주십시오.</div>
+<table>
+<thead><tr><th style="width:8%">코드</th><th>행동</th><th style="width:13%">순서</th></tr></thead>
+<tbody>
+<tr><td class="center"><b>A</b></td><td>질문을 더 구체적으로 바꾸고 원하는 형식·조건을 덧붙여 다시 요청한다.</td><td class="center"><select aria-label="A 순서" class="rank-select" data-label="질문을 더 구체적으로 바꾸고 원하는 형식·조건을 덧붙여 다시 요청한다." data-q6="A"><option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td></tr>
+<tr><td class="center"><b>B</b></td><td>추가자료의 개인정보·내부정보 여부를 확인하고 필요한 내용만 골라 제공한다.</td><td class="center"><select aria-label="B 순서" class="rank-select" data-label="추가자료의 개인정보·내부정보 여부를 확인하고 필요한 내용만 골라 제공한다." data-q6="B"><option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td></tr>
+<tr><td class="center"><b>C</b></td><td>다른 생성형 AI에도 같은 내용을 물어보고 답변의 차이를 비교해 본다.</td><td class="center"><select aria-label="C 순서" class="rank-select" data-label="다른 생성형 AI에도 같은 내용을 물어보고 답변의 차이를 비교해 본다." data-q6="C"><option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td></tr>
+<tr><td class="center"><b>D</b></td><td>답변이 기대와 다른 이유를 살펴보고 업무 목적과 판단기준을 다시 정리한다.</td><td class="center"><select aria-label="D 순서" class="rank-select" data-label="답변이 기대와 다른 이유를 살펴보고 업무 목적과 판단기준을 다시 정리한다." data-q6="D"><option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td></tr>
+<tr><td class="center"><b>E</b></td><td>AI에게 근거와 출처를 다시 제시하도록 요청하고 답변을 보완한다.</td><td class="center"><select aria-label="E 순서" class="rank-select" data-label="AI에게 근거와 출처를 다시 제시하도록 요청하고 답변을 보완한다." data-q6="E"><option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td></tr>
+<tr><td class="center"><b>F</b></td><td>복잡한 요청은 쟁점별로 나누고 각 단계에 필요한 자료와 조건을 제공한다.</td><td class="center"><select aria-label="F 순서" class="rank-select" data-label="복잡한 요청은 쟁점별로 나누고 각 단계에 필요한 자료와 조건을 제공한다." data-q6="F"><option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td></tr>
+<tr><td class="center"><b>G</b></td><td>기존 업무자료나 유사 사례와 비교해 활용할 수 있는 내용을 추려낸다.</td><td class="center"><select aria-label="G 순서" class="rank-select" data-label="기존 업무자료나 유사 사례와 비교해 활용할 수 있는 내용을 추려낸다." data-q6="G"><option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td></tr>
+<tr><td class="center"><b>H</b></td><td>법령·수치 등 핵심내용은 원자료로 확인하고 최종 판단은 직접 정리한다.</td><td class="center"><select aria-label="H 순서" class="rank-select" data-label="법령·수치 등 핵심내용은 원자료로 확인하고 최종 판단은 직접 정리한다." data-q6="H"><option value="">-</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></td></tr>
+</tbody>
+</table>
+<div class="flow">[　] → [　] → [　] → [　]</div>
+<div class="small center">※ 선택한 4개의 코드만 순서대로 적어 주십시오.</div>
 </div>
 </div>
-
 <div class="section">
 <h2>Ⅴ. AI 활용 이유</h2>
-
-<div class="q">
-  <div class="qt">Q7. 생성형 AI를 업무에 활용할 경우, 다음 각 항목이 활용 이유로 어느 정도 중요하다고 생각하십니까?</div>
-  <div class="note">1점 전혀 중요하지 않음 · 2점 조금 중요함 · 3점 상당히 중요함 · 4점 매우 중요함</div>
-  <table>
-    <thead><tr><th>AI를 활용하는 이유</th><th class="scale">1</th><th class="scale">2</th><th class="scale">3</th><th class="scale">4</th></tr></thead>
-    <tbody>
-      <tr><td>업무에 드는 <b>시간과 수고를 줄이기 위해</b></td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>문서의 구성·표현·논리 등 <b>결과물의 완성도를 높이기 위해</b></td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>처음 맡거나 익숙하지 않은 <b>업무를 빠르게 이해하기 위해</b></td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>내가 놓친 쟁점·관점·대안 등을 얻어 <b>생각의 범위를 넓히기 위해</b></td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>반복업무의 절차나 처리방식을 정리하여 <b>업무방식 자체를 개선하기 위해</b></td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-    </tbody>
-  </table>
+<div class="q" id="q7">
+<div class="qt">Q7. 생성형 AI를 업무에 활용할 경우, 다음 각 항목이 활용 이유로 어느 정도 중요하다고 생각하십니까?</div>
+<div class="note">1점 전혀 중요하지 않음 · 2점 조금 중요함 · 3점 상당히 중요함 · 4점 매우 중요함</div>
+<table>
+<thead><tr><th>AI를 활용하는 이유</th><th class="scale">1</th><th class="scale">2</th><th class="scale">3</th><th class="scale">4</th></tr></thead>
+<tbody>
+<tr><td>업무에 드는 <b>시간과 수고를 줄이기 위해</b></td><td class="scale"><input aria-label="업무에 드는 시간과 수고를 줄이기 위해 1점" class="matrix-radio" data-label="업무에 드는 시간과 수고를 줄이기 위해" name="q7_1" type="radio" value="1"/></td><td class="scale"><input aria-label="업무에 드는 시간과 수고를 줄이기 위해 2점" class="matrix-radio" data-label="업무에 드는 시간과 수고를 줄이기 위해" name="q7_1" type="radio" value="2"/></td><td class="scale"><input aria-label="업무에 드는 시간과 수고를 줄이기 위해 3점" class="matrix-radio" data-label="업무에 드는 시간과 수고를 줄이기 위해" name="q7_1" type="radio" value="3"/></td><td class="scale"><input aria-label="업무에 드는 시간과 수고를 줄이기 위해 4점" class="matrix-radio" data-label="업무에 드는 시간과 수고를 줄이기 위해" name="q7_1" type="radio" value="4"/></td></tr>
+<tr><td>문서의 구성·표현·논리 등 <b>결과물의 완성도를 높이기 위해</b></td><td class="scale"><input aria-label="문서의 구성·표현·논리 등 결과물의 완성도를 높이기 위해 1점" class="matrix-radio" data-label="문서의 구성·표현·논리 등 결과물의 완성도를 높이기 위해" name="q7_2" type="radio" value="1"/></td><td class="scale"><input aria-label="문서의 구성·표현·논리 등 결과물의 완성도를 높이기 위해 2점" class="matrix-radio" data-label="문서의 구성·표현·논리 등 결과물의 완성도를 높이기 위해" name="q7_2" type="radio" value="2"/></td><td class="scale"><input aria-label="문서의 구성·표현·논리 등 결과물의 완성도를 높이기 위해 3점" class="matrix-radio" data-label="문서의 구성·표현·논리 등 결과물의 완성도를 높이기 위해" name="q7_2" type="radio" value="3"/></td><td class="scale"><input aria-label="문서의 구성·표현·논리 등 결과물의 완성도를 높이기 위해 4점" class="matrix-radio" data-label="문서의 구성·표현·논리 등 결과물의 완성도를 높이기 위해" name="q7_2" type="radio" value="4"/></td></tr>
+<tr><td>처음 맡거나 익숙하지 않은 <b>업무를 빠르게 이해하기 위해</b></td><td class="scale"><input aria-label="처음 맡거나 익숙하지 않은 업무를 빠르게 이해하기 위해 1점" class="matrix-radio" data-label="처음 맡거나 익숙하지 않은 업무를 빠르게 이해하기 위해" name="q7_3" type="radio" value="1"/></td><td class="scale"><input aria-label="처음 맡거나 익숙하지 않은 업무를 빠르게 이해하기 위해 2점" class="matrix-radio" data-label="처음 맡거나 익숙하지 않은 업무를 빠르게 이해하기 위해" name="q7_3" type="radio" value="2"/></td><td class="scale"><input aria-label="처음 맡거나 익숙하지 않은 업무를 빠르게 이해하기 위해 3점" class="matrix-radio" data-label="처음 맡거나 익숙하지 않은 업무를 빠르게 이해하기 위해" name="q7_3" type="radio" value="3"/></td><td class="scale"><input aria-label="처음 맡거나 익숙하지 않은 업무를 빠르게 이해하기 위해 4점" class="matrix-radio" data-label="처음 맡거나 익숙하지 않은 업무를 빠르게 이해하기 위해" name="q7_3" type="radio" value="4"/></td></tr>
+<tr><td>내가 놓친 쟁점·관점·대안 등을 얻어 <b>생각의 범위를 넓히기 위해</b></td><td class="scale"><input aria-label="내가 놓친 쟁점·관점·대안 등을 얻어 생각의 범위를 넓히기 위해 1점" class="matrix-radio" data-label="내가 놓친 쟁점·관점·대안 등을 얻어 생각의 범위를 넓히기 위해" name="q7_4" type="radio" value="1"/></td><td class="scale"><input aria-label="내가 놓친 쟁점·관점·대안 등을 얻어 생각의 범위를 넓히기 위해 2점" class="matrix-radio" data-label="내가 놓친 쟁점·관점·대안 등을 얻어 생각의 범위를 넓히기 위해" name="q7_4" type="radio" value="2"/></td><td class="scale"><input aria-label="내가 놓친 쟁점·관점·대안 등을 얻어 생각의 범위를 넓히기 위해 3점" class="matrix-radio" data-label="내가 놓친 쟁점·관점·대안 등을 얻어 생각의 범위를 넓히기 위해" name="q7_4" type="radio" value="3"/></td><td class="scale"><input aria-label="내가 놓친 쟁점·관점·대안 등을 얻어 생각의 범위를 넓히기 위해 4점" class="matrix-radio" data-label="내가 놓친 쟁점·관점·대안 등을 얻어 생각의 범위를 넓히기 위해" name="q7_4" type="radio" value="4"/></td></tr>
+<tr><td>반복업무의 절차나 처리방식을 정리하여 <b>업무방식 자체를 개선하기 위해</b></td><td class="scale"><input aria-label="반복업무의 절차나 처리방식을 정리하여 업무방식 자체를 개선하기 위해 1점" class="matrix-radio" data-label="반복업무의 절차나 처리방식을 정리하여 업무방식 자체를 개선하기 위해" name="q7_5" type="radio" value="1"/></td><td class="scale"><input aria-label="반복업무의 절차나 처리방식을 정리하여 업무방식 자체를 개선하기 위해 2점" class="matrix-radio" data-label="반복업무의 절차나 처리방식을 정리하여 업무방식 자체를 개선하기 위해" name="q7_5" type="radio" value="2"/></td><td class="scale"><input aria-label="반복업무의 절차나 처리방식을 정리하여 업무방식 자체를 개선하기 위해 3점" class="matrix-radio" data-label="반복업무의 절차나 처리방식을 정리하여 업무방식 자체를 개선하기 위해" name="q7_5" type="radio" value="3"/></td><td class="scale"><input aria-label="반복업무의 절차나 처리방식을 정리하여 업무방식 자체를 개선하기 위해 4점" class="matrix-radio" data-label="반복업무의 절차나 처리방식을 정리하여 업무방식 자체를 개선하기 위해" name="q7_5" type="radio" value="4"/></td></tr>
+</tbody>
+</table>
 </div>
 </div>
-
 <div class="section">
 <h2>Ⅵ. AI 결과의 검증</h2>
-
-<div class="q">
-  <div class="qt">Q8. 생성형 AI의 내용을 업무에 활용하려는 경우, 어느 정도 확인하면 활용할 수 있다고 생각하십니까?</div>
-  <div class="opt">① AI에게 근거나 출처를 다시 물어보고, 답변이 일관되게 나오면 활용할 수 있다고 생각한다.</div>
-  <div class="opt">② 인터넷 검색이나 다른 AI 등을 통해 비슷한 내용이 확인되면 활용할 수 있다고 생각한다.</div>
-  <div class="opt">③ 내가 알고 있는 내용이나 기존 업무자료와 크게 어긋나지 않는지 확인하면 활용할 수 있다고 생각한다.</div>
-  <div class="opt">④ 업무의 결론에 영향을 주는 법령·수치·사실 등은 공식자료나 원자료에서 직접 확인한 뒤 활용해야 한다고 생각한다.</div>
-  <div class="opt">⑤ 최종적으로 그 내용의 근거와 판단과정을 내가 설명할 수 있을 정도까지 확인한 뒤 활용해야 한다고 생각한다.</div>
+<div class="q" id="q8">
+<div class="qt">Q8. 생성형 AI의 내용을 업무에 활용하려는 경우, 어느 정도 확인하면 활용할 수 있다고 생각하십니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="AI에게 근거나 출처를 다시 물어보고, 답변이 일관되게 나오면 활용할 수 있다고 생각한다." name="q8" type="radio" value="1"/><span>① AI에게 근거나 출처를 다시 물어보고, 답변이 일관되게 나오면 활용할 수 있다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="인터넷 검색이나 다른 AI 등을 통해 비슷한 내용이 확인되면 활용할 수 있다고 생각한다." name="q8" type="radio" value="2"/><span>② 인터넷 검색이나 다른 AI 등을 통해 비슷한 내용이 확인되면 활용할 수 있다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="내가 알고 있는 내용이나 기존 업무자료와 크게 어긋나지 않는지 확인하면 활용할 수 있다고 생각한다." name="q8" type="radio" value="3"/><span>③ 내가 알고 있는 내용이나 기존 업무자료와 크게 어긋나지 않는지 확인하면 활용할 수 있다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="업무의 결론에 영향을 주는 법령·수치·사실 등은 공식자료나 원자료에서 직접 확인한 뒤 활용해야 한다고 생각한다." name="q8" type="radio" value="4"/><span>④ 업무의 결론에 영향을 주는 법령·수치·사실 등은 공식자료나 원자료에서 직접 확인한 뒤 활용해야 한다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="최종적으로 그 내용의 근거와 판단과정을 내가 설명할 수 있을 정도까지 확인한 뒤 활용해야 한다고 생각한다." name="q8" type="radio" value="5"/><span>⑤ 최종적으로 그 내용의 근거와 판단과정을 내가 설명할 수 있을 정도까지 확인한 뒤 활용해야 한다고 생각한다.</span></label></div>
 </div>
-
-<div class="q">
-  <div class="qt">Q9. 생성형 AI의 결과를 확인·검증하는 데 많은 시간과 노력이 필요하다면, 해당 업무에서 AI를 활용할 필요성은 줄어든다고 생각하십니까?</div>
-  <div class="opt">① 전혀 그렇지 않다.</div>
-  <div class="opt">② 그렇지 않은 편이다.</div>
-  <div class="opt">③ 보통이다.</div>
-  <div class="opt">④ 그런 편이다.</div>
-  <div class="opt">⑤ 매우 그렇다.</div>
+<div class="q" id="q9">
+<div class="qt">Q9. 생성형 AI의 결과를 확인·검증하는 데 많은 시간과 노력이 필요하다면, 해당 업무에서 AI를 활용할 필요성은 줄어든다고 생각하십니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="전혀 그렇지 않다." name="q9" type="radio" value="1"/><span>① 전혀 그렇지 않다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="그렇지 않은 편이다." name="q9" type="radio" value="2"/><span>② 그렇지 않은 편이다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="보통이다." name="q9" type="radio" value="3"/><span>③ 보통이다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="그런 편이다." name="q9" type="radio" value="4"/><span>④ 그런 편이다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="매우 그렇다." name="q9" type="radio" value="5"/><span>⑤ 매우 그렇다.</span></label></div>
 </div>
-
-<div class="q">
-  <div class="qt">Q10. 다음과 같은 상황에서 AI가 작성한 내용을 실제 업무에 활용하려고 합니다. 가장 적절한 확인방법은 무엇이라고 생각하십니까?</div>
-  <div class="scenario">
+<div class="q" id="q10">
+<div class="qt">Q10. 다음과 같은 상황에서 AI가 작성한 내용을 실제 업무에 활용하려고 합니다. 가장 적절한 확인방법은 무엇이라고 생각하십니까?</div>
+<div class="scenario">
     생성형 AI를 이용하여 업무 검토보고서의 초안을 작성하였습니다.
     초안에는 관련 법령의 내용, 통계·수치, 계산결과, 검토의견과 문장 표현이 포함되어 있으며,
     관련 법령과 통계·수치의 원자료는 직접 확인할 수 있습니다.
   </div>
-  <div class="opt">① 전체적인 내용이 자연스럽고 기존에 알고 있던 내용과 크게 다르지 않다면 그대로 활용한다.</div>
-  <div class="opt">② AI에게 법령·수치 등의 근거와 출처를 다시 물어보고, 답변이 일관되면 활용한다.</div>
-  <div class="opt">③ 내용 중 잘 모르거나 이상하다고 느껴지는 부분만 원자료를 찾아 확인한다.</div>
-  <div class="opt">④ AI가 작성한 모든 문장과 표현을 각각 원자료와 대조하여 사실 여부를 확인한다.</div>
-  <div class="opt">⑤ 법령·수치·계산 등 핵심내용은 원자료로 확인하고, 문장·표현은 작성자가 직접 적정성을 판단한다.</div>
+<div class="opt"><label class="choice-label"><input data-label="전체적인 내용이 자연스럽고 기존에 알고 있던 내용과 크게 다르지 않다면 그대로 활용한다." name="q10" type="radio" value="1"/><span>① 전체적인 내용이 자연스럽고 기존에 알고 있던 내용과 크게 다르지 않다면 그대로 활용한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="AI에게 법령·수치 등의 근거와 출처를 다시 물어보고, 답변이 일관되면 활용한다." name="q10" type="radio" value="2"/><span>② AI에게 법령·수치 등의 근거와 출처를 다시 물어보고, 답변이 일관되면 활용한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="내용 중 잘 모르거나 이상하다고 느껴지는 부분만 원자료를 찾아 확인한다." name="q10" type="radio" value="3"/><span>③ 내용 중 잘 모르거나 이상하다고 느껴지는 부분만 원자료를 찾아 확인한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="AI가 작성한 모든 문장과 표현을 각각 원자료와 대조하여 사실 여부를 확인한다." name="q10" type="radio" value="4"/><span>④ AI가 작성한 모든 문장과 표현을 각각 원자료와 대조하여 사실 여부를 확인한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="법령·수치·계산 등 핵심내용은 원자료로 확인하고, 문장·표현은 작성자가 직접 적정성을 판단한다." name="q10" type="radio" value="5"/><span>⑤ 법령·수치·계산 등 핵심내용은 원자료로 확인하고, 문장·표현은 작성자가 직접 적정성을 판단한다.</span></label></div>
 </div>
 </div>
-
 <div class="section">
 <h2>Ⅶ. 정보보호 및 자료제공 판단</h2>
-
-<div class="q">
-  <div class="qt">Q11. 외부 상용 생성형 AI에 업무자료를 활용하는 것에 대한 본인의 생각과 가장 가까운 것은 무엇입니까?</div>
-  <div class="opt">① 개인정보만 제거하면 대부분의 업무자료는 활용할 수 있다고 생각한다.</div>
-  <div class="opt">② AI가 자료를 학습하지 않도록 설정하면 내부자료도 활용할 수 있다고 생각한다.</div>
-  <div class="opt">③ 기관의 이용기준과 자료의 성격을 확인하고, 외부 제공이 가능한 범위의 정보만 활용해야 한다고 생각한다.</div>
-  <div class="opt">④ 업무상 필요성이 충분하다면 내부자료도 필요한 부분만 선별하여 활용할 수 있다고 생각한다.</div>
-  <div class="opt">⑤ 개인정보나 내부자료가 포함될 가능성이 있으므로 외부 생성형 AI는 업무에 사용하지 않는 것이 안전하다고 생각한다.</div>
+<div class="q" id="q11">
+<div class="qt">Q11. 외부 상용 생성형 AI에 업무자료를 활용하는 것에 대한 본인의 생각과 가장 가까운 것은 무엇입니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="개인정보만 제거하면 대부분의 업무자료는 활용할 수 있다고 생각한다." name="q11" type="radio" value="1"/><span>① 개인정보만 제거하면 대부분의 업무자료는 활용할 수 있다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="AI가 자료를 학습하지 않도록 설정하면 내부자료도 활용할 수 있다고 생각한다." name="q11" type="radio" value="2"/><span>② AI가 자료를 학습하지 않도록 설정하면 내부자료도 활용할 수 있다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="기관의 이용기준과 자료의 성격을 확인하고, 외부 제공이 가능한 범위의 정보만 활용해야 한다고 생각한다." name="q11" type="radio" value="3"/><span>③ 기관의 이용기준과 자료의 성격을 확인하고, 외부 제공이 가능한 범위의 정보만 활용해야 한다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="업무상 필요성이 충분하다면 내부자료도 필요한 부분만 선별하여 활용할 수 있다고 생각한다." name="q11" type="radio" value="4"/><span>④ 업무상 필요성이 충분하다면 내부자료도 필요한 부분만 선별하여 활용할 수 있다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="개인정보나 내부자료가 포함될 가능성이 있으므로 외부 생성형 AI는 업무에 사용하지 않는 것이 안전하다고 생각한다." name="q11" type="radio" value="5"/><span>⑤ 개인정보나 내부자료가 포함될 가능성이 있으므로 외부 생성형 AI는 업무에 사용하지 않는 것이 안전하다고 생각한다.</span></label></div>
 </div>
-
-<div class="q">
-  <div class="qt">Q12. 외부 생성형 AI의 도움을 받고 싶은 업무에 개인정보나 외부에 제공하기 곤란한 내용이 포함되어 있다면, 다음 중 가장 적절하다고 생각하는 방식은 무엇입니까?</div>
-  <div class="opt">① 이름·연락처 등 개인을 직접 알아볼 수 있는 정보만 삭제하여 활용한다.</div>
-  <div class="opt">② 실제 자료는 제공하지 않고, 필요한 업무쟁점만 특정 정보가 드러나지 않는 일반적인 사례나 질문으로 바꾸어 활용한다.</div>
-  <div class="opt">③ 실제 자료의 이름·부서명 등을 가상의 명칭으로 바꾼 뒤 나머지 내용은 그대로 활용한다.</div>
-  <div class="opt">④ AI에게 자료를 제공하면서 해당 내용을 저장하거나 외부에 공개하지 말라고 함께 요청한다.</div>
-  <div class="opt">⑤ 해당 자료가 포함된 업무라면 정보의 가공 여부와 관계없이 AI 활용 자체를 하지 않는다.</div>
+<div class="q" id="q12">
+<div class="qt">Q12. 외부 생성형 AI의 도움을 받고 싶은 업무에 개인정보나 외부에 제공하기 곤란한 내용이 포함되어 있다면, 다음 중 가장 적절하다고 생각하는 방식은 무엇입니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="이름·연락처 등 개인을 직접 알아볼 수 있는 정보만 삭제하여 활용한다." name="q12" type="radio" value="1"/><span>① 이름·연락처 등 개인을 직접 알아볼 수 있는 정보만 삭제하여 활용한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="실제 자료는 제공하지 않고, 필요한 업무쟁점만 특정 정보가 드러나지 않는 일반적인 사례나 질문으로 바꾸어 활용한다." name="q12" type="radio" value="2"/><span>② 실제 자료는 제공하지 않고, 필요한 업무쟁점만 특정 정보가 드러나지 않는 일반적인 사례나 질문으로 바꾸어 활용한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="실제 자료의 이름·부서명 등을 가상의 명칭으로 바꾼 뒤 나머지 내용은 그대로 활용한다." name="q12" type="radio" value="3"/><span>③ 실제 자료의 이름·부서명 등을 가상의 명칭으로 바꾼 뒤 나머지 내용은 그대로 활용한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="AI에게 자료를 제공하면서 해당 내용을 저장하거나 외부에 공개하지 말라고 함께 요청한다." name="q12" type="radio" value="4"/><span>④ AI에게 자료를 제공하면서 해당 내용을 저장하거나 외부에 공개하지 말라고 함께 요청한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="해당 자료가 포함된 업무라면 정보의 가공 여부와 관계없이 AI 활용 자체를 하지 않는다." name="q12" type="radio" value="5"/><span>⑤ 해당 자료가 포함된 업무라면 정보의 가공 여부와 관계없이 AI 활용 자체를 하지 않는다.</span></label></div>
 </div>
 </div>
-
 <div class="section">
 <h2>Ⅷ. AI와 사람의 판단·책임</h2>
-
-<div class="q">
-  <div class="qt">Q13. 본인이 실무 검토를 맡아 상급자에게 검토의견을 보고해야 하는 상황입니다. 생성형 AI가 관련 법령·통계·기존 사례를 바탕으로 여러 대안을 비교한 뒤 하나의 방안을 가장 적절한 대안으로 제시했습니다. 내용도 논리적이고 근거도 충분해 보입니다. 이 경우 본인의 업무처리 방식과 가장 가까운 것은 무엇입니까?</div>
-  <div class="opt">① 내용이 충실히 검토된 것으로 판단되면, AI의 결론을 중심으로 검토의견을 정리한다.</div>
-  <div class="opt">② AI의 결론과 근거를 정리해 상급자에게 보고하고, 최종적인 판단을 받는다.</div>
-  <div class="opt">③ 주요 근거·예외사항·업무영향을 확인한 뒤, 담당자의 판단으로 검토의견을 정리한다.</div>
-  <div class="opt">④ AI의 결론을 기존 유사사례와 비교해 큰 차이가 없으면 검토의견으로 활용한다.</div>
-  <div class="opt">⑤ AI의 결론을 기본안으로 두고, 현실적으로 맞지 않는 부분을 보완해 검토의견을 정리한다.</div>
+<div class="q" id="q13">
+<div class="qt">Q13. 본인이 실무 검토를 맡아 상급자에게 검토의견을 보고해야 하는 상황입니다. 생성형 AI가 관련 법령·통계·기존 사례를 바탕으로 여러 대안을 비교한 뒤 하나의 방안을 가장 적절한 대안으로 제시했습니다. 내용도 논리적이고 근거도 충분해 보입니다. 이 경우 본인의 업무처리 방식과 가장 가까운 것은 무엇입니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="내용이 충실히 검토된 것으로 판단되면, AI의 결론을 중심으로 검토의견을 정리한다." name="q13" type="radio" value="1"/><span>① 내용이 충실히 검토된 것으로 판단되면, AI의 결론을 중심으로 검토의견을 정리한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="AI의 결론과 근거를 정리해 상급자에게 보고하고, 최종적인 판단을 받는다." name="q13" type="radio" value="2"/><span>② AI의 결론과 근거를 정리해 상급자에게 보고하고, 최종적인 판단을 받는다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="주요 근거·예외사항·업무영향을 확인한 뒤, 담당자의 판단으로 검토의견을 정리한다." name="q13" type="radio" value="3"/><span>③ 주요 근거·예외사항·업무영향을 확인한 뒤, 담당자의 판단으로 검토의견을 정리한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="AI의 결론을 기존 유사사례와 비교해 큰 차이가 없으면 검토의견으로 활용한다." name="q13" type="radio" value="4"/><span>④ AI의 결론을 기존 유사사례와 비교해 큰 차이가 없으면 검토의견으로 활용한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="AI의 결론을 기본안으로 두고, 현실적으로 맞지 않는 부분을 보완해 검토의견을 정리한다." name="q13" type="radio" value="5"/><span>⑤ AI의 결론을 기본안으로 두고, 현실적으로 맞지 않는 부분을 보완해 검토의견을 정리한다.</span></label></div>
 </div>
 </div>
-
 <div class="section">
 <h2>Ⅸ. AI의 기본 특성·한계에 대한 이해</h2>
-
-<div class="q">
-  <div class="qt">Q14. 생성형 AI에 같은 업무를 여러 번 질문했더니 대부분 비슷한 내용의 답변을 제시했고, 설명도 자연스럽고 구체적이었습니다. 이에 대한 생각으로 가장 가까운 것은 무엇입니까?</div>
-  <div class="opt">① 여러 번 비슷한 답변이 나왔다면 내용의 정확성도 상당히 높다고 볼 수 있다.</div>
-  <div class="opt">② 답변이 구체적이고 일관되다면 AI가 충분한 근거를 가지고 답한 것으로 볼 수 있다.</div>
-  <div class="opt">③ 여러 번 비슷한 답변이 나오더라도 같은 정보나 추론방식에서 비슷한 오류가 반복될 수 있다.</div>
-  <div class="opt">④ 서로 다른 생성형 AI에서도 비슷한 답변이 나오면 사실관계는 충분히 확인된 것으로 볼 수 있다.</div>
-  <div class="opt">⑤ 내가 알고 있던 내용과 AI의 답변이 일치한다면 별도의 확인 필요성은 크지 않다.</div>
+<div class="q" id="q14">
+<div class="qt">Q14. 생성형 AI에 같은 업무를 여러 번 질문했더니 대부분 비슷한 내용의 답변을 제시했고, 설명도 자연스럽고 구체적이었습니다. 이에 대한 생각으로 가장 가까운 것은 무엇입니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="여러 번 비슷한 답변이 나왔다면 내용의 정확성도 상당히 높다고 볼 수 있다." name="q14" type="radio" value="1"/><span>① 여러 번 비슷한 답변이 나왔다면 내용의 정확성도 상당히 높다고 볼 수 있다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="답변이 구체적이고 일관되다면 AI가 충분한 근거를 가지고 답한 것으로 볼 수 있다." name="q14" type="radio" value="2"/><span>② 답변이 구체적이고 일관되다면 AI가 충분한 근거를 가지고 답한 것으로 볼 수 있다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="여러 번 비슷한 답변이 나오더라도 같은 정보나 추론방식에서 비슷한 오류가 반복될 수 있다." name="q14" type="radio" value="3"/><span>③ 여러 번 비슷한 답변이 나오더라도 같은 정보나 추론방식에서 비슷한 오류가 반복될 수 있다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="서로 다른 생성형 AI에서도 비슷한 답변이 나오면 사실관계는 충분히 확인된 것으로 볼 수 있다." name="q14" type="radio" value="4"/><span>④ 서로 다른 생성형 AI에서도 비슷한 답변이 나오면 사실관계는 충분히 확인된 것으로 볼 수 있다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="내가 알고 있던 내용과 AI의 답변이 일치한다면 별도의 확인 필요성은 크지 않다." name="q14" type="radio" value="5"/><span>⑤ 내가 알고 있던 내용과 AI의 답변이 일치한다면 별도의 확인 필요성은 크지 않다.</span></label></div>
 </div>
-
-<div class="q">
-  <div class="qt">Q15. 처음에는 생성형 AI의 답변이 업무에 잘 맞지 않았지만, 업무의 목적·조건·관련 자료를 추가로 설명하자 훨씬 적절한 답변을 얻었습니다. 이 상황에 대한 이해로 가장 가까운 것은 무엇입니까?</div>
-  <div class="opt">① 반복해서 질문하면서 AI가 해당 업무를 학습했기 때문이라고 생각한다.</div>
-  <div class="opt">② 질문에 포함된 정보와 맥락이 달라져 답변의 내용과 품질도 달라질 수 있다고 생각한다.</div>
-  <div class="opt">③ 구체적인 자료를 많이 제공할수록 답변의 정확성도 그만큼 높아진다고 생각한다.</div>
-  <div class="opt">④ 두 번째 답변이 업무상 더 적절했다면 추가 확인 필요성은 크게 줄어든다고 생각한다.</div>
-  <div class="opt">⑤ 업무조건까지 반영했다면 AI가 해당 분야의 전문지식을 충분히 갖췄다고 볼 수 있다고 생각한다.</div>
+<div class="q" id="q15">
+<div class="qt">Q15. 처음에는 생성형 AI의 답변이 업무에 잘 맞지 않았지만, 업무의 목적·조건·관련 자료를 추가로 설명하자 훨씬 적절한 답변을 얻었습니다. 이 상황에 대한 이해로 가장 가까운 것은 무엇입니까?</div>
+<div class="opt"><label class="choice-label"><input data-label="반복해서 질문하면서 AI가 해당 업무를 학습했기 때문이라고 생각한다." name="q15" type="radio" value="1"/><span>① 반복해서 질문하면서 AI가 해당 업무를 학습했기 때문이라고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="질문에 포함된 정보와 맥락이 달라져 답변의 내용과 품질도 달라질 수 있다고 생각한다." name="q15" type="radio" value="2"/><span>② 질문에 포함된 정보와 맥락이 달라져 답변의 내용과 품질도 달라질 수 있다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="구체적인 자료를 많이 제공할수록 답변의 정확성도 그만큼 높아진다고 생각한다." name="q15" type="radio" value="3"/><span>③ 구체적인 자료를 많이 제공할수록 답변의 정확성도 그만큼 높아진다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="두 번째 답변이 업무상 더 적절했다면 추가 확인 필요성은 크게 줄어든다고 생각한다." name="q15" type="radio" value="4"/><span>④ 두 번째 답변이 업무상 더 적절했다면 추가 확인 필요성은 크게 줄어든다고 생각한다.</span></label></div>
+<div class="opt"><label class="choice-label"><input data-label="업무조건까지 반영했다면 AI가 해당 분야의 전문지식을 충분히 갖췄다고 볼 수 있다고 생각한다." name="q15" type="radio" value="5"/><span>⑤ 업무조건까지 반영했다면 AI가 해당 분야의 전문지식을 충분히 갖췄다고 볼 수 있다고 생각한다.</span></label></div>
 </div>
 </div>
-
 <div class="section">
 <h2>Ⅹ. 조직의 지원 및 교육수요</h2>
-
-<div class="q">
-  <div class="qt">Q16. 생성형 AI를 업무에 보다 안전하고 효과적으로 활용하기 위해, 다음 지원이 본인에게 어느 정도 필요하다고 생각하십니까?</div>
-  <div class="note">1점 거의 필요하지 않음 · 2점 조금 필요함 · 3점 상당히 필요함 · 4점 매우 필요함</div>
-  <table>
-    <thead><tr><th>조직의 지원</th><th class="scale">1</th><th class="scale">2</th><th class="scale">3</th><th class="scale">4</th></tr></thead>
-    <tbody>
-      <tr><td>실제 행정업무 사례를 활용한 AI 교육</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-    </tbody>
-  </table>
+<div class="q" id="q16">
+<div class="qt">Q16. 생성형 AI를 업무에 보다 안전하고 효과적으로 활용하기 위해, 다음 지원이 본인에게 어느 정도 필요하다고 생각하십니까?</div>
+<div class="note">1점 거의 필요하지 않음 · 2점 조금 필요함 · 3점 상당히 필요함 · 4점 매우 필요함</div>
+<table>
+<thead><tr><th>조직의 지원</th><th class="scale">1</th><th class="scale">2</th><th class="scale">3</th><th class="scale">4</th></tr></thead>
+<tbody>
+<tr><td>실제 행정업무 사례를 활용한 AI 교육</td><td class="scale"><input aria-label="실제 행정업무 사례를 활용한 AI 교육 1점" class="matrix-radio" data-label="실제 행정업무 사례를 활용한 AI 교육" name="q16_1" type="radio" value="1"/></td><td class="scale"><input aria-label="실제 행정업무 사례를 활용한 AI 교육 2점" class="matrix-radio" data-label="실제 행정업무 사례를 활용한 AI 교육" name="q16_1" type="radio" value="2"/></td><td class="scale"><input aria-label="실제 행정업무 사례를 활용한 AI 교육 3점" class="matrix-radio" data-label="실제 행정업무 사례를 활용한 AI 교육" name="q16_1" type="radio" value="3"/></td><td class="scale"><input aria-label="실제 행정업무 사례를 활용한 AI 교육 4점" class="matrix-radio" data-label="실제 행정업무 사례를 활용한 AI 교육" name="q16_1" type="radio" value="4"/></td></tr>
+<tr><td>개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내</td><td class="scale"><input aria-label="개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내 1점" class="matrix-radio" data-label="개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내" name="q16_2" type="radio" value="1"/></td><td class="scale"><input aria-label="개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내 2점" class="matrix-radio" data-label="개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내" name="q16_2" type="radio" value="2"/></td><td class="scale"><input aria-label="개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내 3점" class="matrix-radio" data-label="개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내" name="q16_2" type="radio" value="3"/></td><td class="scale"><input aria-label="개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내 4점" class="matrix-radio" data-label="개인정보·내부자료 등 AI 활용 시 지켜야 할 기준을 알기 쉽게 정리한 안내" name="q16_2" type="radio" value="4"/></td></tr>
+<tr><td>법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구</td><td class="scale"><input aria-label="법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구 1점" class="matrix-radio" data-label="법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구" name="q16_3" type="radio" value="1"/></td><td class="scale"><input aria-label="법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구 2점" class="matrix-radio" data-label="법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구" name="q16_3" type="radio" value="2"/></td><td class="scale"><input aria-label="법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구 3점" class="matrix-radio" data-label="법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구" name="q16_3" type="radio" value="3"/></td><td class="scale"><input aria-label="법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구 4점" class="matrix-radio" data-label="법령·통계·사실관계 등을 쉽게 확인할 수 있는 검증방법이나 도구" name="q16_3" type="radio" value="4"/></td></tr>
+<tr><td>업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식</td><td class="scale"><input aria-label="업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식 1점" class="matrix-radio" data-label="업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식" name="q16_4" type="radio" value="1"/></td><td class="scale"><input aria-label="업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식 2점" class="matrix-radio" data-label="업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식" name="q16_4" type="radio" value="2"/></td><td class="scale"><input aria-label="업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식 3점" class="matrix-radio" data-label="업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식" name="q16_4" type="radio" value="3"/></td><td class="scale"><input aria-label="업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식 4점" class="matrix-radio" data-label="업무별로 활용할 수 있는 질문 예시·체크리스트·업무양식" name="q16_4" type="radio" value="4"/></td></tr>
+<tr><td>업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경</td><td class="scale"><input aria-label="업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경 1점" class="matrix-radio" data-label="업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경" name="q16_5" type="radio" value="1"/></td><td class="scale"><input aria-label="업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경 2점" class="matrix-radio" data-label="업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경" name="q16_5" type="radio" value="2"/></td><td class="scale"><input aria-label="업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경 3점" class="matrix-radio" data-label="업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경" name="q16_5" type="radio" value="3"/></td><td class="scale"><input aria-label="업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경 4점" class="matrix-radio" data-label="업무자료를 보다 안전하게 활용할 수 있는 기관 차원의 AI 이용환경" name="q16_5" type="radio" value="4"/></td></tr>
+<tr><td>부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계</td><td class="scale"><input aria-label="부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계 1점" class="matrix-radio" data-label="부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계" name="q16_6" type="radio" value="1"/></td><td class="scale"><input aria-label="부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계 2점" class="matrix-radio" data-label="부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계" name="q16_6" type="radio" value="2"/></td><td class="scale"><input aria-label="부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계 3점" class="matrix-radio" data-label="부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계" name="q16_6" type="radio" value="3"/></td><td class="scale"><input aria-label="부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계 4점" class="matrix-radio" data-label="부서별 업무에 맞는 AI 활용방법을 함께 만들고 공유하는 체계" name="q16_6" type="radio" value="4"/></td></tr>
+</tbody>
+</table>
 </div>
-
-<div class="q">
-  <div class="qt">Q17. 생성형 AI를 실제 업무에 활용하는 역량을 높이기 위해, 다음 교육방식이 본인에게 어느 정도 도움이 될 것이라고 생각하십니까?</div>
-  <div class="note">1점 거의 도움이 되지 않음 · 2점 조금 도움됨 · 3점 상당히 도움됨 · 4점 매우 도움됨</div>
-  <table>
-    <thead><tr><th>교육·학습 방식</th><th class="scale">1</th><th class="scale">2</th><th class="scale">3</th><th class="scale">4</th></tr></thead>
-    <tbody>
-      <tr><td>AI의 기본원리와 가능성·한계를 이해하는 기초교육</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>보고서·민원·자료정리 등 실제 행정사례를 활용한 실습</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-      <tr><td>필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td><td class="scale">○</td></tr>
-    </tbody>
-  </table>
+<div class="q" id="q17">
+<div class="qt">Q17. 생성형 AI를 실제 업무에 활용하는 역량을 높이기 위해, 다음 교육방식이 본인에게 어느 정도 도움이 될 것이라고 생각하십니까?</div>
+<div class="note">1점 거의 도움이 되지 않음 · 2점 조금 도움됨 · 3점 상당히 도움됨 · 4점 매우 도움됨</div>
+<table>
+<thead><tr><th>교육·학습 방식</th><th class="scale">1</th><th class="scale">2</th><th class="scale">3</th><th class="scale">4</th></tr></thead>
+<tbody>
+<tr><td>AI의 기본원리와 가능성·한계를 이해하는 기초교육</td><td class="scale"><input aria-label="AI의 기본원리와 가능성·한계를 이해하는 기초교육 1점" class="matrix-radio" data-label="AI의 기본원리와 가능성·한계를 이해하는 기초교육" name="q17_1" type="radio" value="1"/></td><td class="scale"><input aria-label="AI의 기본원리와 가능성·한계를 이해하는 기초교육 2점" class="matrix-radio" data-label="AI의 기본원리와 가능성·한계를 이해하는 기초교육" name="q17_1" type="radio" value="2"/></td><td class="scale"><input aria-label="AI의 기본원리와 가능성·한계를 이해하는 기초교육 3점" class="matrix-radio" data-label="AI의 기본원리와 가능성·한계를 이해하는 기초교육" name="q17_1" type="radio" value="3"/></td><td class="scale"><input aria-label="AI의 기본원리와 가능성·한계를 이해하는 기초교육 4점" class="matrix-radio" data-label="AI의 기본원리와 가능성·한계를 이해하는 기초교육" name="q17_1" type="radio" value="4"/></td></tr>
+<tr><td>보고서·민원·자료정리 등 실제 행정사례를 활용한 실습</td><td class="scale"><input aria-label="보고서·민원·자료정리 등 실제 행정사례를 활용한 실습 1점" class="matrix-radio" data-label="보고서·민원·자료정리 등 실제 행정사례를 활용한 실습" name="q17_2" type="radio" value="1"/></td><td class="scale"><input aria-label="보고서·민원·자료정리 등 실제 행정사례를 활용한 실습 2점" class="matrix-radio" data-label="보고서·민원·자료정리 등 실제 행정사례를 활용한 실습" name="q17_2" type="radio" value="2"/></td><td class="scale"><input aria-label="보고서·민원·자료정리 등 실제 행정사례를 활용한 실습 3점" class="matrix-radio" data-label="보고서·민원·자료정리 등 실제 행정사례를 활용한 실습" name="q17_2" type="radio" value="3"/></td><td class="scale"><input aria-label="보고서·민원·자료정리 등 실제 행정사례를 활용한 실습 4점" class="matrix-radio" data-label="보고서·민원·자료정리 등 실제 행정사례를 활용한 실습" name="q17_2" type="radio" value="4"/></td></tr>
+<tr><td>본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습</td><td class="scale"><input aria-label="본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습 1점" class="matrix-radio" data-label="본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습" name="q17_3" type="radio" value="1"/></td><td class="scale"><input aria-label="본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습 2점" class="matrix-radio" data-label="본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습" name="q17_3" type="radio" value="2"/></td><td class="scale"><input aria-label="본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습 3점" class="matrix-radio" data-label="본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습" name="q17_3" type="radio" value="3"/></td><td class="scale"><input aria-label="본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습 4점" class="matrix-radio" data-label="본인이 실제 담당하는 업무를 가져와 AI 활용방법을 직접 만들어 보는 실습" name="q17_3" type="radio" value="4"/></td></tr>
+<tr><td>AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습</td><td class="scale"><input aria-label="AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습 1점" class="matrix-radio" data-label="AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습" name="q17_4" type="radio" value="1"/></td><td class="scale"><input aria-label="AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습 2점" class="matrix-radio" data-label="AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습" name="q17_4" type="radio" value="2"/></td><td class="scale"><input aria-label="AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습 3점" class="matrix-radio" data-label="AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습" name="q17_4" type="radio" value="3"/></td><td class="scale"><input aria-label="AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습 4점" class="matrix-radio" data-label="AI 결과의 오류·근거를 확인하는 검증방법과 정보보호 실습" name="q17_4" type="radio" value="4"/></td></tr>
+<tr><td>다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식</td><td class="scale"><input aria-label="다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식 1점" class="matrix-radio" data-label="다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식" name="q17_5" type="radio" value="1"/></td><td class="scale"><input aria-label="다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식 2점" class="matrix-radio" data-label="다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식" name="q17_5" type="radio" value="2"/></td><td class="scale"><input aria-label="다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식 3점" class="matrix-radio" data-label="다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식" name="q17_5" type="radio" value="3"/></td><td class="scale"><input aria-label="다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식 4점" class="matrix-radio" data-label="다른 직원의 좋은 활용사례와 시행착오를 공유하는 방식" name="q17_5" type="radio" value="4"/></td></tr>
+<tr><td>필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료</td><td class="scale"><input aria-label="필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료 1점" class="matrix-radio" data-label="필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료" name="q17_6" type="radio" value="1"/></td><td class="scale"><input aria-label="필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료 2점" class="matrix-radio" data-label="필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료" name="q17_6" type="radio" value="2"/></td><td class="scale"><input aria-label="필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료 3점" class="matrix-radio" data-label="필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료" name="q17_6" type="radio" value="3"/></td><td class="scale"><input aria-label="필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료 4점" class="matrix-radio" data-label="필요할 때 바로 찾아볼 수 있는 짧은 매뉴얼·예제·동영상 자료" name="q17_6" type="radio" value="4"/></td></tr>
+</tbody>
+</table>
 </div>
 </div>
-
 <div class="footer">공직자 생성형 AI 활용 및 AI 리터러시 설문조사 · 활용경험 고려 수정본</div>
-</div>
-</body>
+<div class="savebar"><button class="primary" id="save-response" type="button">응답파일 저장</button><button id="reset-response" type="button">전체 초기화</button><span id="survey-status"></span></div></div>
+<script>
+(function(){
+  const statusEl = document.getElementById('survey-status');
+  const respondentId = makeId();
+
+  function makeId(){
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    const a = new Uint32Array(12);
+    crypto.getRandomValues(a);
+    let s = '';
+    for(let i=0;i<a.length;i++){
+      s += chars[a[i] % chars.length];
+      if(i===3 || i===7) s += '-';
+    }
+    return s;
+  }
+
+  function clearMarks(){
+    document.querySelectorAll('.missing').forEach(x=>x.classList.remove('missing'));
+    statusEl.textContent=''; statusEl.className='';
+  }
+
+  function collect(){
+    clearMarks();
+    const answers = {};
+    const missing = [];
+
+    const singles = [1,2,3,4,5,8,9,10,11,12,13,14,15];
+    for(const n of singles){
+      const qid='q'+n;
+      const el=document.querySelector(`input[name="${qid}"]:checked`);
+      if(!el){
+        missing.push(qid); document.getElementById(qid)?.classList.add('missing');
+      } else {
+        answers[qid]={value:Number(el.value),label:el.dataset.label};
+      }
+    }
+
+    const ranks=[...document.querySelectorAll('[data-q6]')]
+      .map(s=>({code:s.dataset.q6,label:s.dataset.label,rank:s.value?Number(s.value):null}))
+      .filter(x=>x.rank!==null);
+    const rv=ranks.map(x=>x.rank).sort((a,b)=>a-b);
+    if(ranks.length!==4 || rv.join(',')!=='1,2,3,4'){
+      missing.push('q6'); document.getElementById('q6')?.classList.add('missing');
+    } else {
+      answers.q6=ranks.sort((a,b)=>a.rank-b.rank);
+    }
+
+    const counts={q7:5,q16:6,q17:6};
+    for(const [qid,count] of Object.entries(counts)){
+      const arr=[]; let ok=true;
+      for(let i=1;i<=count;i++){
+        const el=document.querySelector(`input[name="${qid}_${i}"]:checked`);
+        if(!el){ ok=false; break; }
+        arr.push({item:i,label:el.dataset.label,value:Number(el.value)});
+      }
+      if(!ok){ missing.push(qid); document.getElementById(qid)?.classList.add('missing'); }
+      else answers[qid]=arr;
+    }
+    return {data:{respondent_id:respondentId,answers},missing};
+  }
+
+  function esc(s){
+    return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+
+  function resultHtml(data){
+    const rows=[]; const a=data.answers;
+    const addSingle=(qid)=>{ if(a[qid]) rows.push(`<tr><th>${qid.toUpperCase()}</th><td>${esc(a[qid].label)}</td><td>${a[qid].value}</td></tr>`); };
+    ['q1','q2','q3','q4','q5'].forEach(addSingle);
+    rows.push(`<tr><th>Q6</th><td colspan="2">${a.q6.map(x=>`${x.rank}. ${esc(x.code)} — ${esc(x.label)}`).join('<br>')}</td></tr>`);
+    rows.push(`<tr><th>Q7</th><td colspan="2">${a.q7.map(x=>`${esc(x.label)} : ${x.value}점`).join('<br>')}</td></tr>`);
+    ['q8','q9','q10','q11','q12','q13','q14','q15'].forEach(addSingle);
+    ['q16','q17'].forEach(qid=>rows.push(`<tr><th>${qid.toUpperCase()}</th><td colspan="2">${a[qid].map(x=>`${esc(x.label)} : ${x.value}점`).join('<br>')}</td></tr>`));
+    const machine=JSON.stringify(data).replace(/</g,'\\u003c');
+    return `<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AI 리터러시 설문 응답 ${esc(data.respondent_id)}</title><style>body{font-family:"Malgun Gothic",sans-serif;margin:24px;color:#111;line-height:1.5}.wrap{max-width:900px;margin:auto}h1{font-size:23px}.id{padding:12px;background:#f3f3f3;margin:12px 0 18px}table{border-collapse:collapse;width:100%}th,td{border:1px solid #aaa;padding:9px;vertical-align:top}th{width:72px;background:#f6f6f6}.note{margin-top:18px;color:#666;font-size:13px}</style></head><body><div class="wrap"><h1>공직자 생성형 AI 활용 및 AI 리터러시 설문 응답</h1><div class="id"><b>응답번호:</b> ${esc(data.respondent_id)}</div><table><thead><tr><th>문항</th><th>응답내용</th><th>값</th></tr></thead><tbody>${rows.join('')}</tbody></table><div class="note">이 파일에는 성명·사번·부서명 등 개인식별정보를 저장하지 않습니다.</div><script id="survey-data" type="application/json">${machine}<\/script></div></body></html>`;
+  }
+
+  document.getElementById('save-response').addEventListener('click',()=>{
+    const {data,missing}=collect();
+    if(missing.length){
+      statusEl.textContent='미응답 또는 입력 오류: '+[...new Set(missing)].map(x=>x.toUpperCase()).join(', ');
+      statusEl.className='err';
+      document.querySelector('.missing')?.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    const blob=new Blob([resultHtml(data)],{type:'text/html;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const link=document.createElement('a');
+    link.href=url; link.download=`AI설문_${data.respondent_id}.html`;
+    document.body.appendChild(link); link.click(); link.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1500);
+    statusEl.textContent='응답파일을 저장했습니다.'; statusEl.className='ok';
+  });
+
+  document.getElementById('reset-response').addEventListener('click',()=>{
+    if(!confirm('모든 응답을 초기화할까요?')) return;
+    document.querySelectorAll('input[type=radio]').forEach(x=>x.checked=false);
+    document.querySelectorAll('[data-q6]').forEach(x=>x.value='');
+    clearMarks(); window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script></body>
 </html>
