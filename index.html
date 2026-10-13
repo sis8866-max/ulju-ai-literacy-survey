@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>울주군 공직자 생성형 AI 업무활용 및 판단 설문 · 통합 분기형 프로토타입 v2</title>
+<title>울주군 공직자 생성형 AI 업무활용 및 판단 설문 · 파일제출형 v7</title>
 <style>
 :root{--bg:#f4f7fb;--card:#fff;--ink:#1f2937;--muted:#64748b;--line:#dbe3ee;--accent:#2457a7;--soft:#eef4ff;--ok:#0f766e;--warn:#b45309;}
 *{box-sizing:border-box} body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.62}
@@ -42,7 +42,7 @@
 <body>
 <div class="wrap">
 <header class="hero">
-<div class="eyebrow">울주군 공직자 AI 리터러시 조사 · 통합 분기형 프로토타입 v2</div>
+<div class="eyebrow">울주군 공직자 AI 리터러시 조사 · 파일제출형 v7</div>
 <h1>공직자 생성형 AI 업무활용 및 판단 설문</h1>
 <p>정답을 맞히는 시험이 아닙니다. 실제 경험과 평소 업무방식에 가장 가까운 응답을 선택해 주세요.</p>
 </header>
@@ -272,7 +272,7 @@
 </label><label class="opt">
 <input name="Q4" type="radio" value="3"/>
 <span class="marker">3</span>
-<span class="otxt">비용 수치의 출처와 적용 조건을 확인한 뒤, 다른 대안과 같은 기준으로 비교한다.</span>
+<span class="otxt">AI에게 비용 수치의 출처와 산정 기준을 제시하게 하고, 판단근거로 적절한지 판단한다.</span>
 </label><label class="opt">
 <input name="Q4" type="radio" value="4"/>
 <span class="marker">4</span>
@@ -365,7 +365,7 @@
 <div class="card">
 <span class="badge">B형 · 평소 활용방식형</span>
 <h2 class="section-title">평소 AI 활용방식</h2>
-<p class="section-desc">각 문장이 평소 본인의 업무방식과 어느 정도 가까운지 선택해 주세요.</p>
+<p class="section-desc">각 문장이 평소 본인의 업무방식과 어느 정도 가까운지 선택해 주세요. 바람직하다고 생각하는 방식보다 실제로 해온 방식에 가깝게 답해 주세요. 해당 상황을 경험하지 않았거나 판단하기 어려우면 ‘해당 경험 없음·판단 어려움’을 선택해 주세요.</p>
 </div>
 <section class="question" data-qid="BQ1">
 <div class="qhead"><span class="qnum">1</span><div class="qtitle">AI에게 질문하기 전에, 이번 업무에서 확인할 내용이나 필요한 결과가 무엇인지 먼저 정리하는 편이다.<span class="req">*</span></div></div>
@@ -475,8 +475,8 @@
 <span class="marker">6</span>
 <span class="otxt">해당 경험 없음·판단 어려움</span>
 </label></div>
-</section><section class="question" data-qid="BQ5">
-<div class="qhead"><span class="qnum">5</span><div class="qtitle">AI가 법령이나 지침을 근거로 답변하면, 적용 대상과 조건이 지금 검토하는 업무에 맞는지 확인하는 편이다.<span class="req">*</span></div></div>
+</section><section class="question" data-analysis-domain="근거와 결론의 연결 검토" data-qid="BQ5">
+<div class="qhead"><span class="qnum">5</span><div class="qtitle">AI가 근거를 들어 결론을 제시하면, 그 근거가 해당 결론으로 이어지는 것이 타당한지 직접 판단하는 편이다.<span class="req">*</span></div></div>
 <div class="opts"><label class="opt">
 <input name="BQ5" type="radio" value="1"/>
 <span class="marker">1</span>
@@ -529,8 +529,8 @@
 <span class="marker">6</span>
 <span class="otxt">해당 경험 없음·판단 어려움</span>
 </label></div>
-</section><section class="question" data-qid="BQ7">
-<div class="qhead"><span class="qnum">7</span><div class="qtitle">AI가 작성하거나 분석한 내용을 보고자료에 반영할 때, 핵심 근거와 판단과정을 내가 설명할 수 있을 정도로 확인하는 편이다.<span class="req">*</span></div></div>
+</section><section class="question" data-analysis-domain="보고내용의 이해·자기화" data-qid="BQ7">
+<div class="qhead"><span class="qnum">7</span><div class="qtitle">AI가 작성하거나 분석한 내용은 그 근거와 판단과정을 충분히 이해한 뒤에야 보고자료에 반영하는 편이다.<span class="req">*</span></div></div>
 <div class="opts"><label class="opt">
 <input name="BQ7" type="radio" value="1"/>
 <span class="marker">1</span>
@@ -749,10 +749,6 @@
 </label><label class="opt">
 <input name="S3" type="radio" value="6"/>
 <span class="marker">6</span>
-<span class="otxt">현재 교육 참여를 희망하지 않는다</span>
-</label><label class="opt">
-<input name="S3" type="radio" value="7"/>
-<span class="marker">7</span>
 <span class="otxt">기타</span>
 </label></div>
 </section><section class="question" data-qid="B1">
@@ -821,14 +817,14 @@
 <span class="otxt">20년 이상</span>
 </label></div>
 </section>
-<div class="nav"><button class="secondary" onclick="postBack()" type="button">이전</button><button class="primary" onclick="submitSurvey()" type="button">제출하기</button></div>
+<div class="nav"><button class="secondary" onclick="postBack()" type="button">이전</button><button class="primary" onclick="submitSurvey()" type="button">응답 완료 및 파일 내려받기</button></div>
 </div>
 <div class="step" data-step="complete">
 <div class="card" id="completeBox">
 <h2 class="section-title">응답이 완료되었습니다</h2>
-<p>프로토타입에서는 응답이 외부 서버로 전송되지 않습니다. 완료된 유형의 응답만 테스트 데이터에 포함되며, 실제 GitHub 배포본에서는 응답 저장방식을 연결해야 합니다.</p>
+<p>응답이 완료되었습니다. 내려받은 응답파일을 안내된 방법으로 전달하면 제출이 완료됩니다.</p>
 <p class="summary" id="completeSummary"></p>
-<button class="ghost" onclick="downloadTestData()" type="button">테스트 응답 JSON 내려받기</button>
+<button class="ghost" onclick="downloadTestData()" type="button">응답파일 다시 내려받기</button>
 </div>
 </div>
 </form>
@@ -838,38 +834,621 @@
 <div id="previewBody"></div><div class="nav"><span></span><button class="primary" onclick="closePreview()" type="button">확인</button></div>
 </div></div>
 <script>
+const DRAFT_KEY='ulju_ai_literacy_file_v7_draft';
+const LAST_KEY='ulju_ai_literacy_file_v7_last';
+
+function makeResponseId(){
+  return (window.crypto && crypto.randomUUID)
+    ? crypto.randomUUID()
+    : 'r_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2);
+}
+
 const state={
- responseId:(window.crypto&&crypto.randomUUID)?crypto.randomUUID():'r_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2),
- initialChoice:null,currentChoice:null,selectedOrder:null,firstStartedType:null,startedOrder:[],completed:[],completionOrder:[],additionalResponseDecision:null,lastBranch:null,
- previewA:false,previewB:false,previewOrder:[]
+  responseId:makeResponseId(),
+
+  // 선택 경로
+  firstClickedChoice:null,       // 선택화면에서 처음 눌러본 값
+  initialCommittedChoice:null,   // 처음 '선택한 유형 시작'을 눌렀을 때의 값
+  currentChoice:null,            // 현재 선택값
+  selectedOrder:null,            // BOTH 선택 시 시작 순서
+  firstStartedType:null,         // 실제 처음 연 A/B
+  startedOrder:[],               // 실제 시작 순서(부분응답 포함)
+  completed:[],                  // 완료 유형
+  completionOrder:[],            // 완료 순서
+  additionalResponseDecision:null, // 추가응답 유형(A/B), 거절(NO), 해당없음(null)
+  additionalResponseAttempts:[], // 추가응답을 실제로 시작해 본 유형 이력
+  lastBranch:null,
+
+  // 미리보기 경로
+  previewA:false,
+  previewB:false,
+  previewOrder:[]
 };
+
 let currentStep='intro';
+let finalSubmittedData=null;
+
 const previewExamples={
- A:{badge:'A형 · 업무상황형 예시',title:'업무상황을 읽고 대응을 선택합니다',body:`<div class="preview-example"><div class="sample-title">예시 상황</div><p>AI가 여러 대안을 제시했지만, 현재 부서 여건을 충분히 반영하지 못한 것 같습니다. 이때 본인의 대응과 가장 가까운 것을 고르는 방식입니다.</p><div class="preview-option">① AI의 제안 중 가장 현실적으로 보이는 안을 선택한다.</div><div class="preview-option">② 실제 업무조건을 추가해 대안을 다시 비교하게 한다.</div><div class="preview-option">③ 유사사례를 중심으로 다시 정리하게 한다.</div><div class="preview-option">④ 다른 AI의 의견도 함께 확인한다.</div></div><div class="pathbox">※ 실제 분석문항이 아닌 응답방식 확인용 예시입니다.</div>`},
- B:{badge:'B형 · 평소 활용방식형 예시',title:'평소 자신의 활용방식을 척도로 응답합니다',body:`<div class="preview-example"><div class="sample-title">예시 문장</div><p>“AI의 답변에 실제 업무조건이 빠져 있으면, 필요한 조건을 추가해 다시 질문하는 편이다.”</p><div class="preview-option">① 전혀 그렇지 않다</div><div class="preview-option">② 그렇지 않은 편이다</div><div class="preview-option">③ 보통이다</div><div class="preview-option">④ 그런 편이다</div><div class="preview-option">⑤ 매우 그렇다</div><div class="preview-option">⑥ 해당 경험 없음·판단 어려움</div></div><div class="pathbox">※ 실제 분석문항이 아닌 응답방식 확인용 예시입니다.</div>`}
+  A:{
+    badge:'A형 · 업무상황형 예시',
+    title:'업무상황을 읽고 대응을 선택합니다',
+    body:`
+      <div class="preview-example">
+        <div class="sample-title">예시 상황</div>
+        <p>AI가 여러 대안을 제시했지만, 현재 부서 여건을 충분히 반영하지 못한 것 같습니다. 이때 본인의 대응과 가장 가까운 것을 고르는 방식입니다.</p>
+        <div class="preview-option">① AI의 제안 중 가장 현실적으로 보이는 안을 선택한다.</div>
+        <div class="preview-option">② 실제 업무조건을 추가해 대안을 다시 비교하게 한다.</div>
+        <div class="preview-option">③ 유사사례를 중심으로 다시 정리하게 한다.</div>
+        <div class="preview-option">④ 다른 AI의 의견도 함께 확인한다.</div>
+      </div>
+      <div class="pathbox">※ 실제 분석문항이 아닌 응답방식 확인용 예시입니다.</div>`
+  },
+  B:{
+    badge:'B형 · 평소 활용방식형 예시',
+    title:'평소 자신의 활용방식을 척도로 응답합니다',
+    body:`
+      <div class="preview-example">
+        <div class="sample-title">예시 문장</div>
+        <p>“AI의 답변에 실제 업무조건이 빠져 있으면, 필요한 조건을 추가해 다시 질문하는 편이다.”</p>
+        <div class="preview-option">① 전혀 그렇지 않다</div>
+        <div class="preview-option">② 그렇지 않은 편이다</div>
+        <div class="preview-option">③ 보통이다</div>
+        <div class="preview-option">④ 그런 편이다</div>
+        <div class="preview-option">⑤ 매우 그렇다</div>
+        <div class="preview-option">⑥ 해당 경험 없음·판단 어려움</div>
+      </div>
+      <div class="pathbox">※ 실제 분석문항이 아닌 응답방식 확인용 예시입니다.</div>`
+  }
 };
-function go(step){document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));const el=document.querySelector(`.step[data-step="${step}"]`);if(el)el.classList.add('active');currentStep=step;window.scrollTo({top:0,behavior:'smooth'});updateProgress()}
-function answered(q){return q.querySelector('input:checked')!==null}
-function validateStep(step){let ok=true,first=null;const area=document.querySelector(`.step[data-step="${step}"]`);if(!area)return true;area.querySelectorAll('.question').forEach(q=>{q.classList.remove('error');if(!answered(q)){q.classList.add('error');ok=false;if(!first)first=q}});if(!ok&&first)first.scrollIntoView({behavior:'smooth',block:'center'});return ok}
-document.addEventListener('change',e=>{if(e.target.type==='checkbox'){const q=e.target.closest('.question'),max=Number(q?.dataset.max||0);if(max){const checked=[...q.querySelectorAll('input[type=checkbox]:checked')];if(checked.length>max){e.target.checked=false;alert(`최대 ${max}개까지 선택할 수 있습니다.`)}}}const q=e.target.closest('.question');if(q)q.classList.remove('error');updateProgress()});
-function nextFromCommonPre(){if(validateStep('common-pre'))go('type-select')}
-function openPreview(type){const p=previewExamples[type];if(!p)return;if(type==='A'&&!state.previewA){state.previewA=true;state.previewOrder.push('A')}if(type==='B'&&!state.previewB){state.previewB=true;state.previewOrder.push('B')}document.getElementById('previewBadge').textContent=p.badge;document.getElementById('previewTitle').textContent=p.title;document.getElementById('previewBody').innerHTML=p.body;const m=document.getElementById('previewModal');m.classList.add('open');m.setAttribute('aria-hidden','false')}
-function closePreview(){const m=document.getElementById('previewModal');m.classList.remove('open');m.setAttribute('aria-hidden','true')}
-function selectType(v,btn){if(state.initialChoice===null)state.initialChoice=v;state.currentChoice=v;document.querySelectorAll('[data-choice]').forEach(x=>x.classList.remove('selected'));document.querySelectorAll('[data-card]').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected');btn.closest('[data-card]')?.classList.add('selected');document.getElementById('bothOrder').style.display=v==='BOTH'?'block':'none';if(v!=='BOTH')state.selectedOrder=null}
-function selectOrder(v,btn){state.selectedOrder=v;document.querySelectorAll('[data-order]').forEach(x=>x.classList.remove('selected'));btn.classList.add('selected')}
-function markStarted(type){if(!state.firstStartedType)state.firstStartedType=type;if(!state.startedOrder.includes(type))state.startedOrder.push(type)}
-function startBranch(){if(!state.currentChoice){alert('응답할 설문유형을 선택해 주세요.');return}if(state.currentChoice==='BOTH'&&!state.selectedOrder){alert('먼저 응답할 유형을 선택해 주세요.');return}const first=state.currentChoice==='BOTH'?state.selectedOrder:state.currentChoice;markStarted(first);go(first)}
-function branchBack(type){if(state.completed.length===0){go('type-select');return}if(state.completed.length===1&&!state.completed.includes(type)){go('continue-choice');return}go('type-select')}
-function finishBranch(type){if(!validateStep(type))return;if(!state.completed.includes(type)){state.completed.push(type);state.completionOrder.push(type)}state.lastBranch=type;const other=type==='A'?'B':'A';if(state.completed.includes('A')&&state.completed.includes('B')){go('common-post');return}if(state.currentChoice==='BOTH'){if(!state.completed.includes(other)){markStarted(other);go(other)}else go('common-post');return}document.getElementById('continueText').textContent=`${type}형 응답을 마쳤습니다. ${other}형도 이어서 응답할 수 있습니다.`;go('continue-choice')}
-function continueOther(yes){const other=state.lastBranch==='A'?'B':'A';if(yes){state.additionalResponseDecision=other;markStarted(other);go(other)}else{if(state.additionalResponseDecision===null)state.additionalResponseDecision='NO';go('common-post')}}
-function postBack(){if(state.completed.length)go(state.completed[state.completed.length-1]);else go('type-select')}
-function finalSubmissionType(){const a=state.completed.includes('A'),b=state.completed.includes('B');if(a&&b)return'BOTH';if(a)return'A_ONLY';if(b)return'B_ONLY';return'NONE'}
-function collectQuestionAnswersWithin(step){const answers={},area=document.querySelector(`.step[data-step="${step}"]`);if(!area)return answers;area.querySelectorAll('.question').forEach(q=>{const id=q.dataset.qid,checks=[...q.querySelectorAll('input:checked')].map(x=>x.value);if(checks.length)answers[id]=checks.length===1?checks[0]:checks});return answers}
-function collectData(){return{meta:{version:'ULJU-AI-LITERACY-COMBINED-PROTOTYPE-v2-2026-10-12',responseId:state.responseId,submittedAt:new Date().toISOString(),initialChoice:state.initialChoice,currentChoice:state.currentChoice,firstStartedType:state.firstStartedType,startedOrder:[...state.startedOrder],previewA:state.previewA,previewB:state.previewB,previewOrder:[...state.previewOrder],additionalResponseDecision:state.additionalResponseDecision,completedA:state.completed.includes('A'),completedB:state.completed.includes('B'),completionOrder:[...state.completionOrder],finalSubmissionType:finalSubmissionType()},common:{pre:collectQuestionAnswersWithin('common-pre'),post:collectQuestionAnswersWithin('common-post')},A:state.completed.includes('A')?collectQuestionAnswersWithin('A'):null,B:state.completed.includes('B')?collectQuestionAnswersWithin('B'):null}}
-function submitSurvey(){if(!validateStep('common-post'))return;if(state.completed.length===0){alert('A형 또는 B형 중 적어도 하나를 완료해 주세요.');go('type-select');return}const data=collectData();localStorage.setItem('ulju_ai_literacy_prototype_v2_last',JSON.stringify(data));document.getElementById('completeSummary').textContent=`최초 선택: ${state.initialChoice} / 현재 선택: ${state.currentChoice} / 첫 시작유형: ${state.firstStartedType} / 완료순서: ${state.completionOrder.join('→')} / 최종 제출유형: ${finalSubmissionType()}`;document.getElementById('completeBox').style.display='block';go('complete')}
-function downloadTestData(){const raw=localStorage.getItem('ulju_ai_literacy_prototype_v2_last');if(!raw)return;const blob=new Blob([raw],{type:'application/json;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='ulju_ai_literacy_test_response_v2.json';a.click();URL.revokeObjectURL(a.href)}
-function updateProgress(){const labels={intro:'조사 안내','common-pre':'공통 이용현황','type-select':'설문유형 선택',A:'A형 · 업무상황형',B:'B형 · 평소 활용방식형','continue-choice':'추가 응답 선택','common-post':'공통 이해·지원·배경',complete:'완료'};document.getElementById('progressLabel').textContent=labels[currentStep]||'';const qs=[];document.querySelectorAll('.step[data-step="common-pre"] .question,.step[data-step="common-post"] .question').forEach(q=>qs.push(q));if(state.startedOrder.includes('A'))document.querySelectorAll('.step[data-step="A"] .question').forEach(q=>qs.push(q));if(state.startedOrder.includes('B'))document.querySelectorAll('.step[data-step="B"] .question').forEach(q=>qs.push(q));const ans=qs.filter(answered).length,total=qs.length||1,pct=Math.min(100,Math.round(ans/total*100));document.getElementById('progressPct').textContent=pct+'%';document.getElementById('progressBar').style.width=pct+'%'}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closePreview()});updateProgress();
+
+function go(step,save=true){
+  document.querySelectorAll('.step').forEach(x=>x.classList.remove('active'));
+  const el=document.querySelector(`.step[data-step="${step}"]`);
+  if(el) el.classList.add('active');
+  currentStep=step;
+  if(save) saveDraft();
+  window.scrollTo({top:0,behavior:'smooth'});
+  updateProgress();
+}
+
+function answered(q){
+  return q.querySelector('input:checked')!==null;
+}
+
+function validateStep(step){
+  let ok=true,first=null;
+  const area=document.querySelector(`.step[data-step="${step}"]`);
+  if(!area)return true;
+  area.querySelectorAll('.question').forEach(q=>{
+    q.classList.remove('error');
+    if(!answered(q)){
+      q.classList.add('error');
+      ok=false;
+      if(!first)first=q;
+    }
+  });
+  if(!ok&&first)first.scrollIntoView({behavior:'smooth',block:'center'});
+  return ok;
+}
+
+// 복수선택 문항 중 단독 선택으로 처리할 값
+const EXCLUSIVE_CHECKBOX_VALUES={
+  A2:['8'],
+  A4:['6','7'],
+  S1:['7','8'],
+  S2:['9','10']
+};
+
+document.addEventListener('change',e=>{
+  const q=e.target.closest('.question');
+
+  if(e.target.type==='checkbox'&&q){
+    const qid=q.dataset.qid;
+    const exclusive=EXCLUSIVE_CHECKBOX_VALUES[qid]||[];
+
+    if(e.target.checked){
+      if(exclusive.includes(e.target.value)){
+        // '없음/판단 어려움' 등을 선택하면 나머지 선택 해제
+        q.querySelectorAll('input[type=checkbox]').forEach(x=>{
+          if(x!==e.target)x.checked=false;
+        });
+      }else{
+        // 일반 항목을 선택하면 단독선택 항목 해제
+        q.querySelectorAll('input[type=checkbox]').forEach(x=>{
+          if(exclusive.includes(x.value))x.checked=false;
+        });
+      }
+    }
+
+    const max=Number(q.dataset.max||0);
+    if(max){
+      const checked=[...q.querySelectorAll('input[type=checkbox]:checked')];
+      if(checked.length>max){
+        e.target.checked=false;
+        alert(`최대 ${max}개까지 선택할 수 있습니다.`);
+      }
+    }
+  }
+
+  if(q)q.classList.remove('error');
+  saveDraft();
+  updateProgress();
+});
+
+function nextFromCommonPre(){
+  if(validateStep('common-pre'))go('type-select');
+}
+
+// ---------- 미리보기: 기존 내용 유지 ----------
+function openPreview(type){
+  const p=previewExamples[type];
+  if(!p)return;
+
+  if(type==='A'&&!state.previewA){
+    state.previewA=true;
+    state.previewOrder.push('A');
+  }
+  if(type==='B'&&!state.previewB){
+    state.previewB=true;
+    state.previewOrder.push('B');
+  }
+
+  document.getElementById('previewBadge').textContent=p.badge;
+  document.getElementById('previewTitle').textContent=p.title;
+  document.getElementById('previewBody').innerHTML=p.body;
+
+  const modal=document.getElementById('previewModal');
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden','false');
+  saveDraft();
+}
+
+function closePreview(){
+  const modal=document.getElementById('previewModal');
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden','true');
+}
+
+// ---------- 유형 선택 ----------
+function selectType(v,btn){
+  if(state.firstClickedChoice===null)state.firstClickedChoice=v;
+  state.currentChoice=v;
+
+  document.querySelectorAll('[data-choice]').forEach(x=>x.classList.remove('selected'));
+  document.querySelectorAll('[data-card]').forEach(x=>x.classList.remove('selected'));
+  btn.classList.add('selected');
+  btn.closest('[data-card]')?.classList.add('selected');
+
+  document.getElementById('bothOrder').style.display=v==='BOTH'?'block':'none';
+
+  if(v!=='BOTH')state.selectedOrder=null;
+  saveDraft();
+  updateProgress();
+}
+
+function selectOrder(v,btn){
+  state.selectedOrder=v;
+  document.querySelectorAll('[data-order]').forEach(x=>x.classList.remove('selected'));
+  btn.classList.add('selected');
+  saveDraft();
+}
+
+function startBranch(){
+  if(!state.currentChoice){
+    alert('응답할 설문유형을 선택해 주세요.');
+    return;
+  }
+  if(state.currentChoice==='BOTH'&&!state.selectedOrder){
+    alert('먼저 응답할 유형을 선택해 주세요.');
+    return;
+  }
+
+  // '첫 클릭'과 별도로 실제 시작을 확정한 최초 선택을 보존
+  if(state.initialCommittedChoice===null){
+    state.initialCommittedChoice=state.currentChoice;
+  }
+
+  const first=state.currentChoice==='BOTH'?state.selectedOrder:state.currentChoice;
+  markStarted(first);
+  go(first);
+}
+
+function markStarted(type){
+  if(!state.firstStartedType)state.firstStartedType=type;
+  if(!state.startedOrder.includes(type))state.startedOrder.push(type);
+  saveDraft();
+}
+
+function setContinueChoiceText(fromType){
+  if(!fromType)return;
+  const other=fromType==='A'?'B':'A';
+  document.getElementById('continueText').textContent=
+    `${fromType}형 응답을 마쳤습니다. ${other}형도 이어서 응답할 수 있습니다.`;
+}
+
+function showContinueChoice(fromType){
+  setContinueChoiceText(fromType);
+  go('continue-choice');
+}
+
+function branchBack(type){
+  if(state.completed.length===0){
+    go('type-select');
+    return;
+  }
+
+  // 처음부터 BOTH를 선택하여 두 번째 유형을 푸는 중이라면
+  // '추가응답 선택' 화면이 아니라 먼저 완료한 유형으로 돌아감
+  if(state.currentChoice==='BOTH'&&
+     state.completed.length===1&&
+     !state.completed.includes(type)){
+    go(state.completed[0]);
+    return;
+  }
+
+  // 단일 유형 완료 후 자발적으로 추가한 두 번째 유형에서 이전
+  if(state.completed.length===1&&!state.completed.includes(type)){
+    showContinueChoice(state.completed[0]);
+    return;
+  }
+
+  go('type-select');
+}
+
+function finishBranch(type){
+  if(!validateStep(type))return;
+
+  if(!state.completed.includes(type)){
+    state.completed.push(type);
+    state.completionOrder.push(type);
+  }
+  state.lastBranch=type;
+
+  const other=type==='A'?'B':'A';
+
+  if(state.completed.includes('A')&&state.completed.includes('B')){
+    go('common-post');
+    return;
+  }
+
+  if(state.currentChoice==='BOTH'){
+    if(!state.completed.includes(other)){
+      markStarted(other);
+      go(other);
+    }else{
+      go('common-post');
+    }
+    return;
+  }
+
+  showContinueChoice(type);
+}
+
+function continueOther(yes){
+  const other=state.lastBranch==='A'?'B':'A';
+
+  if(yes){
+    state.additionalResponseDecision=other;
+    if(!state.additionalResponseAttempts.includes(other)){
+      state.additionalResponseAttempts.push(other);
+    }
+    markStarted(other);
+    go(other);
+  }else{
+    // 추가응답을 시작했다가 돌아온 경우에도 최종 선택은 NO로 기록.
+    // startedOrder/additionalResponseAttempts에는 시도 이력이 그대로 남음.
+    state.additionalResponseDecision='NO';
+    go('common-post');
+  }
+}
+
+function postBack(){
+  if(state.completed.length){
+    go(state.completed[state.completed.length-1]);
+  }else{
+    go('type-select');
+  }
+}
+
+// ---------- 제출 ----------
+function finalSubmissionType(){
+  const a=state.completed.includes('A');
+  const b=state.completed.includes('B');
+  if(a&&b)return 'BOTH';
+  if(a)return 'A_ONLY';
+  if(b)return 'B_ONLY';
+  return 'NONE';
+}
+
+function submitSurvey(){
+  if(!validateStep('common-post'))return;
+
+  if(state.completed.length===0){
+    alert('A형 또는 B형 중 적어도 하나를 완료해 주세요.');
+    go('type-select');
+    return;
+  }
+
+  const data=collectData();
+  finalSubmittedData=data;
+
+  // 파일 다운로드가 localStorage 사용 여부와 무관하게 먼저 진행됨
+  downloadResponseData(data);
+
+  // 재다운로드 편의를 위한 보조 저장. 실패해도 제출파일 다운로드에는 영향 없음.
+  try{
+    localStorage.setItem(LAST_KEY,JSON.stringify(data));
+  }catch(e){}
+
+  clearDraft();
+
+  document.getElementById('completeSummary').textContent=
+    `첫 확정 선택: ${state.initialCommittedChoice} / 첫 시작유형: ${state.firstStartedType} / `+
+    `완료순서: ${state.completionOrder.join('→')} / 최종 제출유형: ${finalSubmissionType()}`;
+
+  document.getElementById('completeBox').style.display='block';
+  go('complete',false);
+}
+
+function collectQuestionAnswersWithin(step){
+  const answers={};
+  const area=document.querySelector(`.step[data-step="${step}"]`);
+  if(!area)return answers;
+
+  area.querySelectorAll('.question').forEach(q=>{
+    const id=q.dataset.qid;
+    const checks=[...q.querySelectorAll('input:checked')].map(x=>x.value);
+    if(checks.length)answers[id]=checks.length===1?checks[0]:checks;
+  });
+  return answers;
+}
+
+function collectData(){
+  return{
+    meta:{
+      version:'ULJU-AI-LITERACY-COMBINED-FILE-v7-2026-10-13',
+      responseId:state.responseId,
+      submittedAt:new Date().toISOString(),
+
+      firstClickedChoice:state.firstClickedChoice,
+      initialCommittedChoice:state.initialCommittedChoice,
+      currentChoice:state.currentChoice,
+      selectedOrder:state.selectedOrder,
+
+      firstStartedType:state.firstStartedType,
+      startedOrder:[...state.startedOrder],
+
+      previewA:state.previewA,
+      previewB:state.previewB,
+      previewOrder:[...state.previewOrder],
+
+      additionalResponseDecision:state.additionalResponseDecision,
+      additionalResponseAttempts:[...state.additionalResponseAttempts],
+
+      completedA:state.completed.includes('A'),
+      completedB:state.completed.includes('B'),
+      completionOrder:[...state.completionOrder],
+      finalSubmissionType:finalSubmissionType()
+    },
+
+    common:{
+      pre:collectQuestionAnswersWithin('common-pre'),
+      post:collectQuestionAnswersWithin('common-post')
+    },
+
+    // 완료하지 않은 유형의 부분응답은 최종 파일에 포함하지 않음
+    A:state.completed.includes('A')?collectQuestionAnswersWithin('A'):null,
+    B:state.completed.includes('B')?collectQuestionAnswersWithin('B'):null
+  };
+}
+
+function safeTimestampForFilename(iso){
+  return iso.replace(/[-:]/g,'').replace(/\.\d{3}Z$/,'Z').replace('T','_');
+}
+
+function responseFilename(data){
+  const rid=(data.meta.responseId||'response').replace(/[^a-zA-Z0-9_-]/g,'');
+  const shortId=rid.length>12?rid.slice(0,12):rid;
+  const ts=safeTimestampForFilename(data.meta.submittedAt||new Date().toISOString());
+  return `ULJU_AI_${ts}_${shortId}.json`;
+}
+
+function downloadResponseData(data){
+  const json=JSON.stringify(data,null,2);
+  const blob=new Blob([json],{type:'application/json;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download=responseFilename(data);
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+function downloadTestData(){
+  // 같은 완료 화면에서는 브라우저 저장소 사용 여부와 무관하게 메모리의 최종 응답으로 재다운로드
+  if(finalSubmittedData){
+    downloadResponseData(finalSubmittedData);
+    return;
+  }
+
+  // 페이지를 새로 연 경우에만 localStorage를 보조수단으로 사용
+  try{
+    const raw=localStorage.getItem(LAST_KEY);
+    if(!raw){
+      alert('다시 내려받을 응답파일을 찾을 수 없습니다.');
+      return;
+    }
+    const data=JSON.parse(raw);
+    finalSubmittedData=data;
+    downloadResponseData(data);
+  }catch(e){
+    alert('응답파일을 다시 만들 수 없습니다. 처음 내려받은 파일을 제출해 주세요.');
+  }
+}
+
+// ---------- 임시저장 / 복구 ----------
+function collectDraftAnswers(){
+  const answers={};
+  document.querySelectorAll('.question').forEach(q=>{
+    const id=q.dataset.qid;
+    const vals=[...q.querySelectorAll('input:checked')].map(x=>x.value);
+    if(vals.length)answers[id]=vals;
+  });
+  return answers;
+}
+
+function saveDraft(){
+  if(currentStep==='complete')return;
+  try{
+    const draft={
+      savedAt:new Date().toISOString(),
+      currentStep,
+      state:JSON.parse(JSON.stringify(state)),
+      answers:collectDraftAnswers()
+    };
+    localStorage.setItem(DRAFT_KEY,JSON.stringify(draft));
+  }catch(e){}
+}
+
+function clearDraft(){
+  try{localStorage.removeItem(DRAFT_KEY)}catch(e){}
+}
+
+function restoreDraft(draft){
+  if(!draft||!draft.state)return;
+
+  Object.assign(state,draft.state);
+
+  // 응답 복구
+  const answers=draft.answers||{};
+  Object.entries(answers).forEach(([qid,vals])=>{
+    const values=Array.isArray(vals)?vals:[vals];
+    const q=document.querySelector(`.question[data-qid="${qid}"]`);
+    if(!q)return;
+    q.querySelectorAll('input').forEach(inp=>{
+      inp.checked=values.includes(inp.value);
+    });
+  });
+
+  // 선택카드 표시 복구
+  if(state.currentChoice){
+    const btn=document.querySelector(`[data-choice="${state.currentChoice}"]`);
+    if(btn){
+      btn.classList.add('selected');
+      btn.closest('[data-card]')?.classList.add('selected');
+    }
+    document.getElementById('bothOrder').style.display=
+      state.currentChoice==='BOTH'?'block':'none';
+  }
+
+  if(state.selectedOrder){
+    const ob=document.querySelector(`[data-order="${state.selectedOrder}"]`);
+    if(ob)ob.classList.add('selected');
+  }
+
+  const step=draft.currentStep&&document.querySelector(`.step[data-step="${draft.currentStep}"]`)
+    ?draft.currentStep
+    :'common-pre';
+
+  // 추가응답 선택 화면에서 복구된 경우 안내문도 함께 복원
+  if(step==='continue-choice'){
+    const fromType=state.lastBranch||state.completed[0]||null;
+    setContinueChoiceText(fromType);
+  }
+
+  go(step,false);
+}
+
+function offerDraftRestore(){
+  try{
+    const raw=localStorage.getItem(DRAFT_KEY);
+    if(!raw)return;
+    const draft=JSON.parse(raw);
+    if(!draft||!draft.answers)return;
+
+    const hasAnswers=Object.keys(draft.answers).length>0||
+      draft.state?.currentChoice||
+      draft.state?.firstStartedType;
+
+    if(!hasAnswers)return;
+
+    if(confirm('작성 중이던 응답이 있습니다. 이어서 하시겠습니까?')){
+      restoreDraft(draft);
+    }else{
+      clearDraft();
+    }
+  }catch(e){}
+}
+
+// ---------- 진행률 ----------
+function targetTypesForProgress(){
+  const set=new Set(state.completed);
+
+  if(state.currentChoice==='BOTH'){
+    set.add('A');
+    set.add('B');
+  }else if(state.currentChoice==='A'||state.currentChoice==='B'){
+    set.add(state.currentChoice);
+  }
+
+  // 현재 추가응답을 계속하기로 한 경우에만 진행률 분모에 포함.
+  // 시작했다가 취소(NO)한 유형은 startedOrder/attempts에는 남지만 진행률에서는 제외.
+  if(state.additionalResponseDecision==='A'||state.additionalResponseDecision==='B'){
+    set.add(state.additionalResponseDecision);
+  }
+
+  return set;
+}
+
+function updateProgress(){
+  const labels={
+    intro:'조사 안내',
+    'common-pre':'공통 이용현황',
+    'type-select':'설문유형 선택',
+    A:'A형 · 업무상황형',
+    B:'B형 · 평소 활용방식형',
+    'continue-choice':'추가 응답 선택',
+    'common-post':'공통 이해·지원·배경',
+    complete:'완료'
+  };
+  document.getElementById('progressLabel').textContent=labels[currentStep]||'';
+
+  if(currentStep==='complete'){
+    document.getElementById('progressPct').textContent='100%';
+    document.getElementById('progressBar').style.width='100%';
+    return;
+  }
+
+  const qs=[];
+  document.querySelectorAll(
+    '.step[data-step="common-pre"] .question,.step[data-step="common-post"] .question'
+  ).forEach(q=>qs.push(q));
+
+  const targets=targetTypesForProgress();
+
+  if(targets.has('A')){
+    document.querySelectorAll('.step[data-step="A"] .question').forEach(q=>qs.push(q));
+  }
+  if(targets.has('B')){
+    document.querySelectorAll('.step[data-step="B"] .question').forEach(q=>qs.push(q));
+  }
+
+  const ans=qs.filter(answered).length;
+  const total=qs.length||1;
+  const pct=Math.min(100,Math.round(ans/total*100));
+
+  document.getElementById('progressPct').textContent=pct+'%';
+  document.getElementById('progressBar').style.width=pct+'%';
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape')closePreview();
+});
+
+updateProgress();
+setTimeout(offerDraftRestore,150);
 </script>
 </body>
 </html>
