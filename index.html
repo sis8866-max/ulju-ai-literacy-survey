@@ -4,7 +4,7 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
-<title>울주군 공직자 생성형 AI 업무활용 및 판단 설문 · 파일제출형 v7</title>
+<title>공직자 생성형 AI 업무활용 설문</title>
 <style>
 :root{--bg:#f4f7fb;--card:#fff;--ink:#1f2937;--muted:#64748b;--line:#dbe3ee;--accent:#2457a7;--soft:#eef4ff;--ok:#0f766e;--warn:#b45309;}
 *{box-sizing:border-box} body{margin:0;font-family:"Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.62}
@@ -42,9 +42,9 @@
 <body>
 <div class="wrap">
 <header class="hero">
-<div class="eyebrow">울주군 공직자 AI 리터러시 조사 · 파일제출형 v7</div>
-<h1>공직자 생성형 AI 업무활용 및 판단 설문</h1>
-<p>정답을 맞히는 시험이 아닙니다. 실제 경험과 평소 업무방식에 가장 가까운 응답을 선택해 주세요.</p>
+<div class="eyebrow">울주군 공직자 AI 리터러시 조사</div>
+<h1>공직자 생성형 AI 업무활용 설문</h1>
+<p>“정답”은 없습니다. 실제 경험과 평소 업무방식에 가장 가까운 응답을 선택해 주세요.</p>
 </header>
 <div class="progressbox">
 <div class="progressrow"><span id="progressLabel">시작</span><span id="progressPct">0%</span></div>
@@ -56,7 +56,15 @@
 <h2 class="section-title">조사 안내</h2>
 <p class="section-desc">먼저 공통문항에 응답한 뒤, 본인이 원하는 설문유형을 선택합니다. A형·B형 중 하나만 응답하거나 두 유형 모두 응답할 수 있습니다.</p>
 <div class="notice oknotice"><b>설문유형 선택 자체에는 정답이 없습니다.</b><br/>문항 설명을 보고 본인에게 더 맞는 유형을 선택해 주세요.</div>
-<div class="nav"><span></span><button class="primary" onclick="go('common-pre')" type="button">시작하기</button></div>
+<div class="notice" id="previousSubmissionBox" style="display:none;margin-top:18px">
+<b>이 브라우저에서 이전에 응답파일을 만든 기록이 있습니다.</b><br/>
+기존 응답파일을 다시 내려받거나, 필요하면 새 응답을 작성할 수 있습니다.
+<div class="inline-choice" style="margin-top:12px">
+<button class="ghost" onclick="downloadPreviousResponse()" type="button">기존 응답파일 다시 내려받기</button>
+<button class="primary" onclick="startNewResponse()" type="button">새로 작성하기</button>
+</div>
+</div>
+<div class="nav" id="normalStartNav"><span></span><button class="primary" onclick="beginSurvey()" type="button">시작하기</button></div>
 </div>
 </div>
 <div class="step" data-step="common-pre">
@@ -202,7 +210,7 @@
 </div><div class="choice-card preview-card" data-card="BOTH">
 <span class="badge">둘 다</span><h3>A형과 B형 모두 응답</h3><p>두 유형을 모두 풀어볼 수 있습니다. 공통문항은 한 번만 응답합니다.</p>
 <div class="card-actions"><button class="primary mini" data-choice="BOTH" onclick="selectType('BOTH',this)" type="button">둘 다 선택</button></div>
-</div></div><div class="notice"><b>미리보기는 실제 분석문항이 아닙니다.</b><br/>각 유형의 응답방식만 확인할 수 있는 예시이며, 미리보기 여부는 경로정보로만 기록됩니다.</div>
+</div></div><div class="notice"><b>미리보기는 실제 분석문항이 아닙니다.</b><br/>각 유형의 응답방식만 확인할 수 있는 예시이며, 미리보기 여부는 경로정보로만 기록됩니다.<br/>➔ 미리보기를 통해 각 유형의 응답방식을 확인해 보세요.</div>
 <div class="notice" id="bothOrder" style="display:none;margin-top:18px">
 <b>어느 유형부터 응답하시겠습니까?</b>
 <div class="inline-choice">
@@ -220,7 +228,7 @@
 <p class="section-desc">각 상황을 읽고 실제 본인의 대응과 가장 가까운 것을 선택해 주세요.</p>
 </div>
 <section class="question" data-qid="Q1">
-<div class="qhead"><span class="qnum">1</span><div class="qtitle">검토를 시작하면서 쟁점과 판단기준을 정리하려고 합니다. AI를 활용한다면 본인의 방식과 가장 가까운 것은 무엇입니까?<span class="req">*</span></div></div>
+<div class="qhead"><span class="qnum">1</span><div class="qtitle">검토를 시작하면서 쟁점과 판단기준을 정리하려고 합니다. AI를 활용할 때, 다음 방식 중 본인이 검토의 중심으로 삼을 방식 하나를 고른다면 무엇입니까?<span class="req">*</span></div></div>
 <div class="opts"><label class="opt">
 <input name="Q1" type="radio" value="1"/>
 <span class="marker">1</span>
@@ -260,7 +268,7 @@
 </label></div>
 </section><section class="question" data-qid="Q4">
 <div class="qhead"><span class="qnum">3</span><div class="qtitle">AI가 A안을 추천했습니다. 설명은 논리적이고 구체적이며, A안의 비용이 다른 대안보다 적게 든다는 점을 주요 근거로 제시했습니다. 다만 비용 판단에 사용한 자료의 출처는 제시하지 않았습니다.<span class="req">*</span></div></div>
-<div class="qcontext">이 답변을 검토에 어떻게 활용하겠습니까?</div>
+<div class="qcontext">AI가 제시한 ‘A안의 비용이 더 적게 든다’는 판단을 검토에 반영할 때, 다음 중 본인의 방식과 가장 가까운 것은 무엇입니까?</div>
 <div class="opts"><label class="opt">
 <input name="Q4" type="radio" value="1"/>
 <span class="marker">1</span>
@@ -272,7 +280,7 @@
 </label><label class="opt">
 <input name="Q4" type="radio" value="3"/>
 <span class="marker">3</span>
-<span class="otxt">AI에게 비용 수치의 출처와 산정 기준을 제시하게 하고, 판단근거로 적절한지 판단한다.</span>
+<span class="otxt">AI에게 비용 수치의 출처와 산정 기준을 제시하게 하고, 실제 자료를 확인하여 이번 검토의 판단근거로 적절한지 판단한다.</span>
 </label><label class="opt">
 <input name="Q4" type="radio" value="4"/>
 <span class="marker">4</span>
@@ -340,23 +348,23 @@
 </label></div>
 </section><section class="question" data-qid="Q10">
 <div class="qhead"><span class="qnum">7</span><div class="qtitle">AI와 여러 차례 대화하며 추진방안을 검토하고, 그 내용을 바탕으로 보고서 초안을 작성하게 했습니다. 초안에는 제공한 자료를 바탕으로 예상 수요와 필요한 인력을 산정한 분석이 포함되어 있습니다. 분석 결과는 업무에 도움이 될 것 같지만, 사용된 분석방법은 평소 다뤄보지 않은 것이어서 어떤 가정과 계산을 거쳐 해당 인원이 필요하다는 결론이 나왔는지 충분히 이해하지 못한 상태입니다.<span class="req">*</span></div></div>
-<div class="qcontext">최종 보고를 준비하면서 어떻게 하겠습니까?</div>
+<div class="qcontext">이 분석을 최종 보고의 판단근거로 활용하는 것에 대해, 다음 중 본인의 생각과 가장 가까운 것은 무엇입니까?</div>
 <div class="opts"><label class="opt">
 <input name="Q10" type="radio" value="1"/>
 <span class="marker">1</span>
-<span class="otxt">AI에게 분석내용을 쉽게 풀어서 다시 설명하게 하고, 설명이 이해되면 보고서에 반영한다.</span>
+<span class="otxt">AI에게 분석 결과와 의미를 쉽게 풀어 설명하게 하고, 그 설명이 이해되면 세부 가정과 계산과정까지는 별도로 확인하지 않고 최종 판단근거로 활용한다.</span>
 </label><label class="opt">
 <input name="Q10" type="radio" value="2"/>
 <span class="marker">2</span>
-<span class="otxt">AI에게 산정에 사용한 수치와 계산과정을 다시 점검하게 하고, 오류가 없다고 확인되면 보고서에 반영한다.</span>
+<span class="otxt">AI에게 사용한 수치와 계산과정을 다시 점검하게 하고, 오류가 없다는 답변을 받으면 그 결과를 최종 판단근거로 활용한다.</span>
 </label><label class="opt">
 <input name="Q10" type="radio" value="3"/>
 <span class="marker">3</span>
-<span class="otxt">AI에게 가정과 계산과정을 설명하게 하고, 충분히 이해하거나 검증하지 못한 내용은 확정적인 판단근거로 사용하지 않는다.</span>
+<span class="otxt">AI에게 사용한 가정과 계산과정을 설명하게 하되, 그 근거와 과정을 충분히 이해하지 못했거나 타당성을 확인하지 못한 내용은 최종 판단근거로 사용하지 않는다.</span>
 </label><label class="opt">
 <input name="Q10" type="radio" value="4"/>
 <span class="marker">4</span>
-<span class="otxt">AI에게 이 분석과 관련한 예상 질문과 답변을 정리하게 하고, 주요 내용을 숙지하여 보고에 대비한다.</span>
+<span class="otxt">AI에게 예상 질문과 답변을 정리하게 하고, 분석과정을 충분히 이해하지 못했더라도 주요 답변을 숙지해 설명할 수 있으면 최종 판단근거로 활용한다.</span>
 </label></div>
 </section>
 <div class="nav"><button class="secondary" onclick="branchBack('A')" type="button">이전</button><button class="primary" onclick="finishBranch('A')" type="button">A형 완료</button></div>
@@ -692,10 +700,6 @@
 <span class="marker"></span>
 <span class="otxt">개인정보·내부정보 활용기준과 사례 안내</span>
 </label><label class="opt">
-<input name="S2" type="checkbox" value="3"/>
-<span class="marker"></span>
-<span class="otxt">법령·통계·출처 등 AI 결과를 검증하는 방법</span>
-</label><label class="opt">
 <input name="S2" type="checkbox" value="4"/>
 <span class="marker"></span>
 <span class="otxt">직무별 프롬프트·활용사례·체크리스트 제공</span>
@@ -823,7 +827,7 @@
 <div class="card" id="completeBox">
 <h2 class="section-title">응답이 완료되었습니다</h2>
 <p>응답이 완료되었습니다. 내려받은 응답파일을 안내된 방법으로 전달하면 제출이 완료됩니다.</p>
-<p class="summary" id="completeSummary"></p>
+<p class="small">응답파일이 내려받아졌는지 확인해 주세요. 파일이 없다면 ‘응답파일 다시 내려받기’를 눌러 주세요.</p><p class="summary" id="completeSummary"></p>
 <button class="ghost" onclick="downloadTestData()" type="button">응답파일 다시 내려받기</button>
 </div>
 </div>
@@ -834,8 +838,10 @@
 <div id="previewBody"></div><div class="nav"><span></span><button class="primary" onclick="closePreview()" type="button">확인</button></div>
 </div></div>
 <script>
-const DRAFT_KEY='ulju_ai_literacy_file_v7_draft';
-const LAST_KEY='ulju_ai_literacy_file_v7_last';
+const DRAFT_KEY='ulju_ai_literacy_file_v12_draft';
+const LAST_KEY='ulju_ai_literacy_file_last';
+const LEGACY_LAST_KEYS=['ulju_ai_literacy_file_v7_last'];
+const BROWSER_ID_KEY='ulju_ai_literacy_browser_participant_id_v1';
 
 function makeResponseId(){
   return (window.crypto && crypto.randomUUID)
@@ -843,8 +849,41 @@ function makeResponseId(){
     : 'r_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2);
 }
 
+function makeSubmissionId(){
+  return (window.crypto && crypto.randomUUID)
+    ? 's_'+crypto.randomUUID()
+    : 's_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2);
+}
+
+function makeBrowserParticipantId(){
+  return (window.crypto && crypto.randomUUID)
+    ? 'b_'+crypto.randomUUID()
+    : 'b_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2);
+}
+
+function getOrCreateBrowserParticipantId(){
+  try{
+    let id=localStorage.getItem(BROWSER_ID_KEY);
+    if(!id){
+      id=makeBrowserParticipantId();
+      localStorage.setItem(BROWSER_ID_KEY,id);
+    }
+    return {id,persisted:true};
+  }catch(e){
+    return {id:makeBrowserParticipantId(),persisted:false};
+  }
+}
+
+const browserIdentity=getOrCreateBrowserParticipantId();
+
 const state={
   responseId:makeResponseId(),
+  submissionId:null,
+  browserParticipantId:browserIdentity.id,
+  browserParticipantIdPersisted:browserIdentity.persisted,
+  previousSubmissionDetected:false,
+  previousResponseId:null,
+  previousSubmittedAt:null,
 
   // 선택 경로
   firstClickedChoice:null,       // 선택화면에서 처음 눌러본 값
@@ -867,6 +906,65 @@ const state={
 
 let currentStep='intro';
 let finalSubmittedData=null;
+
+function readStoredJson(keys){
+  for(const key of keys){
+    try{
+      const raw=localStorage.getItem(key);
+      if(!raw)continue;
+      const data=JSON.parse(raw);
+      if(data)return data;
+    }catch(e){}
+  }
+  return null;
+}
+
+function getPreviousResponseData(){
+  return readStoredJson([LAST_KEY,...LEGACY_LAST_KEYS]);
+}
+
+function getDraftData(){
+  return readStoredJson([DRAFT_KEY]);
+}
+
+function showPreviousSubmissionIfAny(){
+  const prev=getPreviousResponseData();
+  if(!prev)return false;
+  const box=document.getElementById('previousSubmissionBox');
+  const nav=document.getElementById('normalStartNav');
+  if(box)box.style.display='block';
+  if(nav)nav.style.display='none';
+  return true;
+}
+
+function beginSurvey(){
+  if(showPreviousSubmissionIfAny())return;
+  go('common-pre');
+}
+
+function markPreviousSubmissionForNewResponse(){
+  const prev=getPreviousResponseData();
+  if(!prev)return;
+  state.previousSubmissionDetected=true;
+  state.previousResponseId=prev.meta?.responseId||null;
+  state.previousSubmittedAt=prev.meta?.submittedAt||null;
+}
+
+function startNewResponse(){
+  markPreviousSubmissionForNewResponse();
+  const box=document.getElementById('previousSubmissionBox');
+  if(box)box.style.display='none';
+  go('common-pre');
+}
+
+function downloadPreviousResponse(){
+  const data=getPreviousResponseData();
+  if(!data){
+    alert('기존 응답파일을 찾을 수 없습니다.');
+    return;
+  }
+  downloadResponseData(data);
+}
 
 const previewExamples={
   A:{
@@ -1151,6 +1249,36 @@ function postBack(){
 }
 
 // ---------- 제출 ----------
+function validateBeforeFinalSubmit(){
+  if(state.completed.length===0){
+    alert('A형 또는 B형 중 적어도 하나를 완료해 주세요.');
+    go('type-select');
+    return false;
+  }
+
+  const steps=['common-pre'];
+  if(state.completed.includes('A'))steps.push('A');
+  if(state.completed.includes('B'))steps.push('B');
+  steps.push('common-post');
+
+  for(const step of steps){
+    const area=document.querySelector(`.step[data-step="${step}"]`);
+    if(!area)continue;
+
+    const missing=[...area.querySelectorAll('.question')].filter(q=>!answered(q));
+    if(missing.length){
+      go(step,false);
+      missing.forEach(q=>q.classList.add('error'));
+      setTimeout(()=>{
+        missing[0].scrollIntoView({behavior:'smooth',block:'center'});
+      },0);
+      alert('응답하지 않은 문항이 있습니다. 표시된 문항을 확인해 주세요.');
+      return false;
+    }
+  }
+  return true;
+}
+
 function finalSubmissionType(){
   const a=state.completed.includes('A');
   const b=state.completed.includes('B');
@@ -1161,13 +1289,12 @@ function finalSubmissionType(){
 }
 
 function submitSurvey(){
-  if(!validateStep('common-post'))return;
+  if(!validateBeforeFinalSubmit())return;
 
-  if(state.completed.length===0){
-    alert('A형 또는 B형 중 적어도 하나를 완료해 주세요.');
-    go('type-select');
-    return;
-  }
+  // 한 번의 실제 제출을 식별하는 번호.
+  // 같은 완료파일 재다운로드는 같은 submissionId를 유지하고,
+  // 같은 responseId가 여러 탭에서 갈라져 각각 제출되면 서로 다른 submissionId가 생성됨.
+  if(!state.submissionId)state.submissionId=makeSubmissionId();
 
   const data=collectData();
   finalSubmittedData=data;
@@ -1197,8 +1324,12 @@ function collectQuestionAnswersWithin(step){
 
   area.querySelectorAll('.question').forEach(q=>{
     const id=q.dataset.qid;
-    const checks=[...q.querySelectorAll('input:checked')].map(x=>x.value);
-    if(checks.length)answers[id]=checks.length===1?checks[0]:checks;
+    const inputs=[...q.querySelectorAll('input')];
+    const checks=inputs.filter(x=>x.checked).map(x=>x.value);
+    if(checks.length){
+      const isCheckbox=inputs.some(x=>x.type==='checkbox');
+      answers[id]=isCheckbox?checks:checks[0];
+    }
   });
   return answers;
 }
@@ -1206,9 +1337,15 @@ function collectQuestionAnswersWithin(step){
 function collectData(){
   return{
     meta:{
-      version:'ULJU-AI-LITERACY-COMBINED-FILE-v7-2026-10-13',
+      version:'ULJU-AI-LITERACY-COMBINED-FILE-v12-2026-10-14',
       responseId:state.responseId,
+      submissionId:state.submissionId,
+      browserParticipantId:state.browserParticipantId,
+      browserParticipantIdPersisted:state.browserParticipantIdPersisted,
       submittedAt:new Date().toISOString(),
+      sameBrowserPreviousSubmissionDetected:state.previousSubmissionDetected,
+      previousResponseId:state.previousResponseId,
+      previousSubmittedAt:state.previousSubmittedAt,
 
       firstClickedChoice:state.firstClickedChoice,
       initialCommittedChoice:state.initialCommittedChoice,
@@ -1273,14 +1410,13 @@ function downloadTestData(){
     return;
   }
 
-  // 페이지를 새로 연 경우에만 localStorage를 보조수단으로 사용
+  // 페이지를 새로 연 경우에는 현재/이전 버전의 마지막 응답 저장값을 보조수단으로 사용
   try{
-    const raw=localStorage.getItem(LAST_KEY);
-    if(!raw){
+    const data=getPreviousResponseData();
+    if(!data){
       alert('다시 내려받을 응답파일을 찾을 수 없습니다.');
       return;
     }
-    const data=JSON.parse(raw);
     finalSubmittedData=data;
     downloadResponseData(data);
   }catch(e){
@@ -1313,7 +1449,9 @@ function saveDraft(){
 }
 
 function clearDraft(){
-  try{localStorage.removeItem(DRAFT_KEY)}catch(e){}
+  try{
+    localStorage.removeItem(DRAFT_KEY);
+  }catch(e){}
 }
 
 function restoreDraft(draft){
@@ -1363,23 +1501,25 @@ function restoreDraft(draft){
 
 function offerDraftRestore(){
   try{
-    const raw=localStorage.getItem(DRAFT_KEY);
-    if(!raw)return;
-    const draft=JSON.parse(raw);
-    if(!draft||!draft.answers)return;
+    const draft=getDraftData();
+    if(!draft||!draft.answers)return false;
 
     const hasAnswers=Object.keys(draft.answers).length>0||
       draft.state?.currentChoice||
       draft.state?.firstStartedType;
 
-    if(!hasAnswers)return;
+    if(!hasAnswers)return false;
 
     if(confirm('작성 중이던 응답이 있습니다. 이어서 하시겠습니까?')){
       restoreDraft(draft);
     }else{
       clearDraft();
+      showPreviousSubmissionIfAny();
     }
-  }catch(e){}
+    return true;
+  }catch(e){
+    return false;
+  }
 }
 
 // ---------- 진행률 ----------
@@ -1448,7 +1588,9 @@ document.addEventListener('keydown',e=>{
 });
 
 updateProgress();
-setTimeout(offerDraftRestore,150);
+setTimeout(()=>{
+  if(!offerDraftRestore())showPreviousSubmissionIfAny();
+},150);
 </script>
 </body>
 </html>
